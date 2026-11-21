@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novena Maize Millers | Rosacorn & Animal Feeds - Maua</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#fff;color:#222}
+.top{background:#228b22;color:#fff;padding:8px 15px;display:flex;justify-content:space-between;font-size:13px;font-weight:bold}
+header{text-align:center;padding:15px}
+header img{width:150px;height:150px;object-fit:cover;border-radius:50%}
+header h1{color:#228b22;font-size:24px}
+header p{font-weight:bold}
+nav{background:#000;color:#fff;display:flex;justify-content:center;gap:14px;padding:12px;flex-wrap:wrap;position:sticky;top:0}
+nav a{color:#fff;text-decoration:none;font-weight:bold;font-size:13px;cursor:pointer}
+nav a:hover{color:#ffeb3b}
+.page{display:none;padding:15px;max-width:1000px;margin:auto}
+.page.active{display:block}
+.hero img{width:100%;border-radius:10px}
+.hero h2{background:#000;color:#fff;padding:15px;margin-top:-5px;border-radius:0 0 10px 10px}
+.hero h2 span{color:#ffeb3b;font-size:14px}
+.btns{display:flex;gap:10px;margin:15px 0;flex-wrap:wrap}
+.btn{flex:1;text-align:center;padding:14px;border-radius:8px;font-weight:bold;text-decoration:none;min-width:140px}
+.green{background:#228b22;color:#fff}
+.yellow{background:#ffeb3b;color:#000}
+.blue{background:#002855;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;margin-top:15px}
+.card{border:2px solid #228b22;border-radius:10px;overflow:hidden}
+.card img{width:100%;height:180px;object-fit:cover}
+.card div{padding:12px}
+.price{color:#228b22;font-weight:bold;margin-top:8px}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th{background:#228b22;color:#fff;padding:10px;text-align:left}
+td{padding:10px;border-bottom:1px solid #ddd}
+tr:nth-child(even){background:#f5f5f5}
+.feed-title{background:#002855;color:#fff;padding:12px;border-radius:8px;margin-top:20px}
+.location-box{background:#fff3cd;border:2px solid #ffeb3b;border-radius:10px;padding:18px;margin-top:20px}
+.location-box h2{color:#228b22;margin-bottom:8px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:15px}
+.gallery img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+.contact{background:#228b22;color:#fff;padding:20px;border-radius:10px;margin-top:20px}
+.contact b{color:#ffeb3b}
+footer{background:#000;color:#fff;text-align:center;padding:15px;margin-top:20px}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
+button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-radius:8px;font-weight:bold}
+</style>
+</head>
+<body>
+
+<div class="top"><span>📍 Behind Shell, Iriene - Maua</span><span>0793 306 004</span></div>
+
+<header>
+<img src="logo.jpg" alt="Novena Logo">
+<h1>NOVENA MAIZE MILLERS</h1>
+<p>ROSACORN • ANIMAL FEEDS</p>
+<p style="margin-top:5px;font-size:14px;font-weight:bold">📍 Behind Shell Petrol Station, Iriene Area, Maua Town</p>
+</header>
+
+<nav>
+<a onclick="show('home')">HOME</a>
+<a onclick="show('about')">ABOUT</a>
+<a onclick="show('prices')">PRICES</a>
+<a onclick="show('feeds')">ANIMAL FEEDS</a>
+<a onclick="show('gallery')">GALLERY</a>
+<a onclick="show('location')">LOCATION</a>
+<a onclick="show('contact')">CONTACT</a>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+<div class="hero">
+<img src="rosa-team.jpg">
+<h2>ROSACORN • ANIMAL FEEDS<br><span>From Maua Mill - Straight To You</span></h2>
+</div>
+<div class="btns">
+<a class="btn green" href="https://wa.me/254793306004?text=Hello%20Novena%2C%20I%20want%20to%20order">ORDER ON WHATSAPP</a>
+<a class="btn yellow" href="tel:+254793306004">CALL NOW</a>
+</div>
+<h2>OUR PRODUCTS</h2>
+<div class="grid">
+<div class="card"><img src="rosa-5kg.jpg"><div><h3>ROSACORN - ROSA</h3><p>Grade 1 Maize Meal - Our Main Product</p><p class="price">5kg - Ksh 325 | 1 Bale - Ksh 1,660</p></div></div>
+<div class="card"><img src="feeds-poster.jpg"><div><h3>ANIMAL FEEDS</h3><p>9 Types - Kienyeji, Layers, Dairy, Chick, Pig & More</p><p class="price">From Ksh 180</p></div></div>
+</div>
+
+<div class="location-box">
+<h2>📍 WHERE TO FIND US</h2>
+<p><b>Novena Maize Millers</b><br><b>Behind Shell Petrol Station,</b><br><b>Iriene Area, Maua Town</b><br>Meru County</p>
+<p style="margin-top:10px">Uko Maua? Fika Shell Petrol Station Iriene, Mill iko nyuma yake tu! Utaona unga ukisagwa fresh!</p>
+<div class="btns">
+<a class="btn blue" href="https://www.google.com/maps/search/?api=1&query=Shell+Petrol+Station+Iriene+Maua+Town+Meru" target="_blank">📍 OPEN IN GOOGLE MAPS</a>
+<a class="btn green" href="https://wa.me/254793306004?text=Hello%20Novena%2C%20I%20am%20at%20Shell%20Iriene%2C%20direct%20me%20to%20your%20Mill">I'M AT SHELL - DIRECT ME</a>
+</div>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="page">
+<h2>WHO ARE WE?</h2><br>
+<p><b>Novena Millers</b> is a real mill in Maua Town, Meru County. We focus on only 2 things and we do them well.</p><br>
+<p>1. <b>ROSACORN (ROSA)</b> - Grade 1 Maize Meal<br>2. <b>ANIMAL FEEDS</b> - 9 Types for Chickens, Pigs & Cows</p>
+<div class="location-box"><h2>📍 OUR LOCATION</h2><p><b>Behind Shell Petrol Station, Iriene Area</b><br>Maua Town, Meru County</p></div>
+</div>
+
+<!-- PRICES -->
+<div id="prices" class="page">
+<h2>PRICES - ROSACORN (ROSA)</h2>
+<p>Confirm on WhatsApp before ordering.</p>
+<h3 style="margin-top:20px">🌽 ROSA - ROSACORN</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr>
+<tr><td>1 Bale Rosa</td><td><b>1,630 - 1,660</b></td></tr>
+<tr><td>1/2 Bale Rosa</td><td><b>845</b></td></tr>
+<tr><td>5kg Rosa (1 Bag)</td><td><b>325</b></td></tr>
+<tr><td>10kg Rosa</td><td><b>650</b></td></tr>
+<tr><td>20kg Rosa</td><td><b>1,260</b></td></tr>
+<tr><td>22.5kg Rosa</td><td><b>1,410</b></td></tr>
+<tr><td>45kg Rosa</td><td><b>2,820</b></td></tr></table>
+<div class="btns"><a class="btn green" href="https://wa.me/254793306004?text=Hello%20Novena%2C%20I%20want%20to%20order%20Rosa">ORDER ROSA</a></div>
+</div>
+
+<!-- ANIMAL FEEDS -->
+<div id="feeds" class="page">
+<img src="feeds-poster.jpg" style="width:100%;border-radius:10px">
+<h2 style="margin-top:15px">NOVENA ANIMAL FEEDS</h2>
+<p>Quality Feeds for All Animals - Chickens, Pigs, Cows, Calves & Bulls.<br><b>Available in 70KG | 20KG | 10KG | 5KG Sacks</b></p>
+<h3 class="feed-title">🐔 KIENYEJI MASH</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,400</b></td></tr><tr><td>20KGS</td><td><b>720</b></td></tr><tr><td>10KGS</td><td><b>360</b></td></tr><tr><td>5KGS</td><td><b>180</b></td></tr></table>
+<h3 class="feed-title">🐔 GROWERS MASH</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,900</b></td></tr><tr><td>20KGS</td><td><b>980</b></td></tr><tr><td>10KGS</td><td><b>490</b></td></tr><tr><td>5KGS</td><td><b>270</b></td></tr></table>
+<h3 class="feed-title">🥚 LAYERS MASH</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,900</b></td></tr><tr><td>20KGS</td><td><b>980</b></td></tr><tr><td>10KGS</td><td><b>490</b></td></tr><tr><td>5KGS</td><td><b>270</b></td></tr></table>
+<h3 class="feed-title">🐄 DAIRY MEAL</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>3,000</b></td></tr><tr><td>20KGS</td><td><b>980</b></td></tr><tr><td>10KGS</td><td><b>490</b></td></tr></table>
+<h3 class="feed-title">🐖 SOW & WEANER</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,200</b></td></tr><tr><td>20KGS</td><td><b>660</b></td></tr><tr><td>10KGS</td><td><b>330</b></td></tr></table>
+<h3 class="feed-title">🐖 PIG FINISHER</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,200</b></td></tr><tr><td>20KGS</td><td><b>660</b></td></tr><tr><td>10KGS</td><td><b>330</b></td></tr></table>
+<h3 class="feed-title">🌾 BRAN MIX</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>40KGS</td><td><b>1,400</b></td></tr></table>
+<h3 class="feed-title">🌽 MAIZE GERM</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>50KGS</td><td><b>2,000</b></td></tr></table>
+<h3 class="feed-title">🐥 CHICK MASH</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,150</b></td></tr><tr><td>20KGS</td><td><b>880</b></td></tr><tr><td>10KGS</td><td><b>440</b></td></tr><tr><td>5KGS</td><td><b>220</b></td></tr></table>
+<div class="btns"><a class="btn green" href="https://wa.me/254793306004?text=Hello%20Novena%2C%20I%20want%20Animal%20Feeds%20prices">ORDER ANIMAL FEEDS</a></div>
+</div>
+
+<!-- GALLERY -->
+<div id="gallery" class="page">
+<h2>GALLERY</h2><p>Real photos from Maua.</p>
+<div class="gallery">
+<img src="rosa-team.jpg"><img src="rosa-5kg.jpg"><img src="rosa-stock.jpg"><img src="delivery.jpg"><img src="loading.jpg"><img src="maua-mill.jpg"><img src="feeds-poster.jpg">
+</div>
+</div>
+
+<!-- LOCATION -->
+<div id="location" class="page">
+<h2>📍 FIND US - LOCATION</h2><br>
+<div class="location-box">
+<h2>NOVENA MAIZE MILLERS</h2>
+<p><b>📍 Behind Shell Petrol Station</b><br><b>📍 Iriene Area</b><br><b>📍 Maua Town, Meru County</b><br><b>📍 Kenya</b><br><b>📞 Phone:</b> 0793 306 004 / 0720 220 892<br><b>✉️ Email:</b> cymumu7@gmail.com</p>
+</div><br>
+<p><b>How to find us - Rahisi sana:</b><br>1. Fika <b>Maua Town</b><br>2. Tafuta <b>Shell Petrol Station - Iriene Area</b><br>3. Mill iko <b>nyuma ya Shell</b> tu! Utafika mara moja.</p>
+<div class="btns">
+<a class="btn blue" href="https://www.google.com/maps/search/?api=1&query=Shell+Petrol+Station+Iriene+Maua+Town+Meru" target="_blank">📍 OPEN IN GOOGLE MAPS</a>
+<a class="btn green" href="https://wa.me/254793306004?text=Hello%20Novena%2C%20I%20am%20at%20Shell%20Iriene%2C%20direct%20me%20to%20your%20Mill">I'M AT SHELL - DIRECT ME</a>
+<a class="btn yellow" href="tel:+254793306004">CALL FOR DIRECTIONS</a>
+</div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+<h2>CONTACT US</h2><br>
+<p><b>📍 Location:</b> Behind Shell Petrol Station, Iriene Area, Maua Town, Meru County<br><b>Phone / WhatsApp:</b> 0793 306 004<br><b>Phone 2:</b> 0720 220 892<br><b>Email:</b> <a href="mailto:cymumu7@gmail.com">cymumu7@gmail.com</a></p>
+<div class="contact"><h3>📍 BEHIND SHELL, IRIENE - MAUA</h3><br><p><b>0793 306 004 • 0720 220 892</b><br>cymumu7@gmail.com</p></div><br>
+<div class="btns"><a class="btn blue" href="https://www.google.com/maps/search/?api=1&query=Shell+Petrol+Station+Iriene+Maua+Town+Meru" target="_blank">📍 VIEW ON MAP</a></div>
+<form onsubmit="sendWA(event)">
+<input id="name" placeholder="Your Name" required>
+<input id="msg" placeholder="What do you want? e.g. Rosa 5kg x 2" required>
+<button type="submit">SEND ON WHATSAPP</button>
+</form>
+</div>
+
+<footer>© 2026 NOVENA MAIZE MILLERS • 📍 Behind Shell Petrol Station, Iriene Area, Maua Town • cymumu7@gmail.com</footer>
+
+<script>
+function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function sendWA(e){e.preventDefault();var n=document.getElementById('name').value;var m=document.getElementById('msg').value;window.open('https://wa.me/254793306004?text='+encodeURIComponent('Hello Novena, I am '+n+'. '+m));}
+</script>
+</body>
+</html>
