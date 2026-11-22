@@ -316,13 +316,16 @@ window.scrollTo(0,0);
 }
 
   function logoutStaff(){
-  document.getElementById('staff').style.display = 'block';
-  document.getElementById('staff-login-box').style.display = 'block';
-  document.getElementById('panel-director').style.display = 'none';
-  document.getElementById('panel-miller').style.display = 'none';
-  document.getElementById('panel-sales').style.display = 'none';
-  document.getElementById('panel-delivery').style.display = 'none';
-  document.getElementById('staff-pass').value = '';
+  var ids = ['staff','staff-section','login-box','staff-login-box','panel-director','panel-manager','panel-cashier','panel-secretary','panel-driver'];
+  ids.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){
+      if(id.indexOf('panel-')===0){ el.style.display='none'; }
+      else { el.style.display='block'; }
+    }
+  });
+  var p = document.getElementById('staff-pass');
+  if(p) p.value='';
   window.scrollTo(0,0);
 }
 
