@@ -294,11 +294,13 @@ function staffLogin(){
   var passwords = {director:'director123', miller:'miller123', sales:'sales123', delivery:'delivery123'};
   if(pass === passwords[role]){
     document.getElementById('staff-error').innerHTML = '';
-    document.getElementById('panel-director').style.display = role==='boss' ? 'block' : 'none';
+    document.getElementById('panel-director').style.display = role==='director' ? 'block' : 'none';
     document.getElementById('panel-miller').style.display = role==='miller' ? 'block' : 'none';
     document.getElementById('panel-sales').style.display = role==='sales' ? 'block' : 'none';
     document.getElementById('panel-delivery').style.display = role==='delivery' ? 'block' : 'none';
     showSalesPrices();
+    document.getElementById('staff').style.display = 'none';
+window.scrollTo(0,0);
   } else {
     document.getElementById('staff-error').innerHTML = 'Wrong password! Please try again.';
   }
