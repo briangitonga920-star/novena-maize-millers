@@ -209,6 +209,9 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
     <p id="staff-error" style="color:red;text-align:center"></p>
 
     <div id="panel-director" style="display:none">
+      <div style="text-align:right;">
+  <button onclick="logoutStaff()" style="background:#333;color:white;padding:8px 15px;border:none;border-radius:5px;cursor:pointer;">Logout</button>
+</div>
       <hr>
       <h3>👑 DIRECTOR DASHBOARD</h3>
       <div style="background:#fff3cd;padding:12px;border-radius:8px;margin:10px 0;">
@@ -258,6 +261,8 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
       <p>✅ Maize Flour 5kg x 20 - For Isiolo Town</p>
       <p>⏳ Maize Flour 2kg x 10 - Waiting</p>
       <button onclick="alert('Job marked as DONE!')" style="width:100%;padding:12px;background:green;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer">MARK AS DONE</button>
+      <h3>Incoming Orders</h3>
+<div id="miller-orders">Loading...</div>
     </div>
 
     <div id="panel-sales" style="display:none">
@@ -272,6 +277,8 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
       <h3>🛵 DELIVERY PANEL</h3>
       <p>📦 Juma - Isiolo Town - 10 bags</p>
       <button onclick="alert('Delivery marked as DELIVERED!')" style="width:100%;padding:12px;background:blue;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer">MARK AS DELIVERED</button>
+      <h3>Orders to Deliver</h3>
+<div id="delivery-orders">Loading...</div>
     </div>
 
   </div>
@@ -299,11 +306,22 @@ var passwords = {director:'director123',miller:'miller123',sales:'sales123',deli
     document.getElementById('panel-sales').style.display = role==='sales' ? 'block' : 'none';
     document.getElementById('panel-delivery').style.display = role==='delivery' ? 'block' : 'none';
     showSalesPrices();
+    showOrders();
     document.getElementById('login-box').style.display = 'none';
 window.scrollTo(0,0);
   } else {
     document.getElementById('staff-error').innerHTML = 'Wrong password! Please try again.';
   }
+}
+
+  function logoutStaff(){
+  document.getElementById('login-box').style.display = 'block';
+  document.getElementById('panel-director').style.display = 'none';
+  document.getElementById('panel-miller').style.display = 'none';
+  document.getElementById('panel-sales').style.display = 'none';
+  document.getElementById('panel-delivery').style.display = 'none';
+  document.getElementById('staff-pass').value = '';
+  window.scrollTo(0,0);
 }
 
 // --- PRICE SYSTEM: BOSS -> SALES ---
@@ -369,9 +387,30 @@ function bossNewOrder(){
   var p = document.getElementById('o-product').value;
   var q = document.getElementById('o-qty').value;
   var pl = document.getElementById('o-place').value;
-  var msg = 'NEW ORDER - NOVENA: Customer ' + n + ' - ' + p + ' x ' + q + ' - Deliver to: ' + pl + '. Miller: Please mill now. Delivery: Get ready to deliver.';
+  if(!n || !q) return alert('Weka jina na idadi!');
+
+  // 1. Save order ili Miller na Delivery waione
+  var orders = JSON.parse(localStorage.getItem('novena_orders') || '[]');
+  orders.push({name:n, product:p, qty:q, place:pl, time:new Date().toLocaleString(), status:'New'});
+  localStorage.setItem('novena_orders', JSON.stringify(orders));
+
+  // 2. Kama zamani - copy kwa WhatsApp
+  var msg = 'NEW ORDER - NOVENA: Customer ' + n + ' - ' + p + ' x ' + q + ' - Deliver to ' + pl;
   navigator.clipboard.writeText(msg);
-  alert('Order copied! Paste it in the Miller and Delivery Groups.');
+  alert('Order ime-save! Miller na Delivery wataiona sasa.');
+  showOrders();
+}
+
+function showOrders(){
+  var orders = JSON.parse(localStorage.getItem('novena_orders') || '[]');
+  var html = orders.length ? '' : 'Hakuna order bado.';
+  orders.slice().reverse().forEach(function(o){
+    html += '<div style="background:#fff;padding:10px;margin:5px 0;border-radius:5px;text-align:left;">' + o.name + ' - ' + o.product + ' x ' + o.qty + '<br><small>' + o.place + ' | ' + o.time + ' | ' + o.status + '</small></div>';
+  });
+  var m = document.getElementById('miller-orders');
+  if(m) m.innerHTML = html;
+  var d = document.getElementById('delivery-orders');
+  if(d) d.innerHTML = html;
 }
 showSalesPrices();
 showShopPrices();
