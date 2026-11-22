@@ -211,6 +211,11 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
     <div id="panel-director" style="display:none">
       <hr>
       <h3>👑 DIRECTOR DASHBOARD</h3>
+      <div style="background:#fff3cd;padding:12px;border-radius:8px;margin:10px 0;">
+<b>🔒 Change My Password</b><br>
+<input id="new-pass" type="password" placeholder="New Password" style="padding:8px;width:90%;margin:5px 0;"><br>
+<button onclick="changeDirectorPass()" style="padding:8px 15px;background:#000;color:#fff;border:none;border-radius:5px;">Save New Password</button>
+</div>
       <h4>💰 UPDATE PRICE</h4>
       <select id="boss-product" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid #ddd">
         <option>Maize Flour 5kg</option>
@@ -273,10 +278,19 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
 </section>
 
 <script>
-function staffLogin(){
+var passwords =JSON.parsel(localstorage.getItem('staffPasswords') || '{director:'director123', miller:'miller123', sales:'sales123', delivery:'delivery123'};
+    function changeDirectorPass(){
+  var np = document.getElementById('new-pass').value;
+  if(!np || np.length < 4){ alert('Password lazima iwe herufi 4 au zaidi'); return; }
+  passwords.director = np;
+  localStorage.setItem('staffPasswords', JSON.stringify(passwords));
+  document.getElementById('new-pass').value = '';
+  alert('Password mpya imesave! Kuanzia sasa tumia: ' + np);
+}
+ function staffLogin(){
   var role = document.getElementById('staff-role').value;
   var pass = document.getElementById('staff-pass').value;
-  var passwords = {director:'director123', miller:'miller123', sales:'sales123', delivery:'delivery123'};
+  
   if(pass === passwords[role]){
     document.getElementById('staff-error').innerHTML = '';
     document.getElementById('panel-director').style.display = role==='director' ? 'block' : 'none';
