@@ -210,7 +210,7 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
 
     <label><b>Select Role:</b></label>
     <select id="staff-role" style="width:100%;padding:12px;border-radius:10px;margin:8px 0 12px;border:1px solid #ddd">
-      <option value="boss">DIRECTOR</option>
+      <option value="director">DIRECTOR</option>
       <option value="miller">MILLER - Milling</option>
       <option value="sales">SALES - Selling</option>
       <option value="delivery">DELIVERY - Delivery</option>
@@ -291,10 +291,10 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
 function staffLogin(){
   var role = document.getElementById('staff-role').value;
   var pass = document.getElementById('staff-pass').value;
-  var passwords = {boss:'boss123', miller:'miller123', sales:'sales123', delivery:'delivery123'};
+  var passwords = {director:'director123', miller:'miller123', sales:'sales123', delivery:'delivery123'};
   if(pass === passwords[role]){
     document.getElementById('staff-error').innerHTML = '';
-    document.getElementById('panel-boss').style.display = role==='boss' ? 'block' : 'none';
+    document.getElementById('panel-director').style.display = role==='boss' ? 'block' : 'none';
     document.getElementById('panel-miller').style.display = role==='miller' ? 'block' : 'none';
     document.getElementById('panel-sales').style.display = role==='sales' ? 'block' : 'none';
     document.getElementById('panel-delivery').style.display = role==='delivery' ? 'block' : 'none';
