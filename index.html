@@ -66,6 +66,7 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 <a onclick="show('location')">LOCATION</a>
 <a onclick="show('contact')">CONTACT</a>
 <a onclick="show('vibes')">😂 VIBES</a>
+<a onclick="show('staff')">🔐 STAFF</a>
 </nav>
 
 <!-- HOME -->
@@ -199,6 +200,89 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
   </div>
   <p>Order sasa 👉 <a href="https://wa.me/254720220892">WhatsApp 0720 220 892</a> | Call <a href="tel:+254793308004">0793 308 004</a></p>
 </section>
+  <!-- STAFF PANEL - NOVENA FINAL -->
+<section id="staff" class="page" style="padding:30px 15px;max-width:500px;margin:auto;text-align:center">
+  <h2>🔐 NOVENA STAFF</h2>
+  <p>Ingia na password ya kazi yako. Calls: <b>0793 308 004</b></p>
+
+  <div id="staff-login" style="background:#fff;padding:20px;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,0.1)">
+    <select id="staff-role" style="width:100%;padding:12px;margin-bottom:10px;border-radius:10px">
+      <option value="boss">BOSS</option>
+      <option value="miller">MILLER - Wa Kusaga</option>
+      <option value="sales">SALES - Wa Kuza</option>
+      <option value="delivery">DELIVERY - Wa Kupeleka</option>
+    </select>
+    <input id="staff-pass" type="password" placeholder="Password" style="width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;margin-bottom:10px">
+    <button onclick="staffLogin()" style="width:100%;padding:12px;background:#000;color:#fff;border:none;border-radius:10px;font-weight:bold">INGIA</button>
+    <p id="staff-error" style="color:red"></p>
+    <p style="font-size:12px;color:#888">Boss: boss123 | Miller: miller123<br>Sales: sales123 | Delivery: delivery123</p>
+  </div>
+
+  <div id="panel-boss" style="display:none;background:#FFF8E1;padding:20px;border-radius:15px;text-align:left">
+    <h3>👑 BOSS DASHBOARD</h3>
+    <p><b>Bei za Leo:</b></p>
+    Unga 2kg: <input id="price2" value="350" style="width:80px;padding:8px"> <br><br>
+    Unga 5kg: <input id="price5" value="800" style="width:80px;padding:8px"> <br><br>
+    Rosa Tamu 2kg: <input id="priceRosa" value="380" style="width:80px;padding:8px"> <br><br>
+    <button onclick="bossUpdatePrice()" style="width:100%;padding:12px;background:#25D366;color:#fff;border:none;border-radius:10px;font-weight:bold">💾 BADILISHA BEI & TUMA KWA SALES</button>
+    <p id="boss-msg" style="background:#fff;padding:10px;border-radius:10px;margin-top:10px"></p>
+    <button onclick="staffLogout()" style="margin-top:10px">Toka</button>
+  </div>
+
+  <div id="panel-miller" style="display:none;background:#E3F2FD;padding:20px;border-radius:15px;text-align:left">
+    <h3>⚙️ MILLER - KAZI YA LEO</h3>
+    <p>✅ Sagia Unga 5kg x 10 - kwa Juma, Isiolo</p>
+    <p>✅ Sagia Rosa Tamu 2kg x 20 - Stock</p>
+    <p style="font-size:12px;color:#666">Hauoni bei wala pesa - kazi yako ni kusaga tu.</p>
+    <button onclick="staffLogout()">Toka</button>
+  </div>
+
+  <div id="panel-sales" style="display:none;background:#E8F5E9;padding:20px;border-radius:15px;text-align:left">
+    <h3>🛒 SALES - UZA</h3>
+    <p><b>Bei za Leo:</b> Unga 2kg: 350 | 5kg: 800 | Rosa: 380</p>
+    <p>Order mpya: <b>2</b> zinangoja</p>
+    <a href="https://wa.me/254720220892?text=Habari%2C%20nataka%20ku-order%20unga" style="display:block;text-align:center;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;font-weight:bold">WhatsApp Mteja - 0720 220 892</a>
+    <br><button onclick="staffLogout()">Toka</button>
+  </div>
+
+  <div id="panel-delivery" style="display:none;background:#F3E5F5;padding:20px;border-radius:15px;text-align:left">
+    <h3>🛵 DELIVERY - PELEKA</h3>
+    <p>📍 Peleka kwa Mama Njoroge - Isiolo Town</p>
+    <p>📍 Peleka kwa Juma - Bulapesa</p>
+    <p style="font-size:12px;color:#666">Hauoni bei - kazi yako ni kupeleka tu.</p>
+    <a href="tel:+254793308004" style="display:block;text-align:center;background:#000;color:#fff;padding:12px;border-radius:10px;text-decoration:none">Call Office - 0793 308 004</a>
+    <br><button onclick="staffLogout()">Toka</button>
+  </div>
+</section>
+
+<script>
+function staffLogin(){
+  var role=document.getElementById('staff-role').value;
+  var pass=document.getElementById('staff-pass').value;
+  var codes={boss:'boss123',miller:'miller123',sales:'sales123',delivery:'delivery123'};
+  if(pass===codes[role]){
+    document.getElementById('staff-login').style.display='none';
+    document.getElementById('panel-'+role).style.display='block';
+    document.getElementById('staff-error').innerText='';
+  } else {
+    document.getElementById('staff-error').innerText='Password sio sahihi! Jaribu tena.';
+  }
+}
+function staffLogout(){
+  document.getElementById('staff-login').style.display='block';
+  ['boss','miller','sales','delivery'].forEach(function(r){document.getElementById('panel-'+r).style.display='none';});
+  document.getElementById('staff-pass').value='';
+}
+function bossUpdatePrice(){
+  var p2=document.getElementById('price2').value;
+  var p5=document.getElementById('price5').value;
+  var pr=document.getElementById('priceRosa').value;
+  var msg='SALES TEAM - Bei mpya kutoka kwa Boss: Unga 2kg ni '+p2+', 5kg ni '+p5+', Rosa Tamu 2kg ni '+pr+'. Tafadhali tuma kwa wateja wote sasa. - Novena';
+  document.getElementById('boss-msg').innerText=msg;
+  navigator.clipboard.writeText(msg);
+  alert('Message ime-copy! Sasa fungua Group ya NOVENA SALES na u-paste hapo.');
+}
+</script>
 
   </body>
 </html>
