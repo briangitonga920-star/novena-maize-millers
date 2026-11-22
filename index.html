@@ -24,6 +24,9 @@ nav a:hover{color:#ffeb3b}
 .btn{flex:1;text-align:center;padding:14px;border-radius:8px;font-weight:bold;text-decoration:none;min-width:140px}
 .green{background:#228b22;color:#fff}
 .yellow{background:#ffeb3b;color:#000}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:10px}
+.price-card{background:#fff;border:1px solid #eee;border-radius:12px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.price-card .kes{font-size:20px;font-weight:bold;color:#1a7a3a;margin:6px 0}
 .blue{background:#002855;color:#fff}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;margin-top:15px}
 .card{border:2px solid #228b22;border-radius:10px;overflow:hidden}
@@ -333,10 +336,17 @@ function showSalesPrices(){
 }
   function showShopPrices(){
   let prices = getPrices();
-  let html = "";
-  for(let name in prices){ html += "<p><b>" + name + "</b> - KES " + prices[name] + "</p>"; }
-  let shop = document.getElementById('shop-prices');
-  if(shop) shop.innerHTML = html;
+  let html = '<div class="price-grid">';
+  for(let name in prices){
+    let isOut = name.includes('2kg');
+    html += '<div class="price-card">'
+    + '<b>'+name+'</b><br>'
+    + '<div class="kes">'+(isOut ? '<span style="color:red;font-size:15px;">NOT AVAILABLE</span>' : 'KES '+prices[name])+'</div>'
+    + '<a href="https://wa.me/254720220892?text=Nataka%20'+name+'" style="background:#25D366;color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:inline-block;font-size:13px;">Order on WhatsApp</a>'
+    + '</div>';
+  }
+  html += '</div>';
+  document.getElementById('shop-prices').innerHTML = html;
 }
 function bossUpdatePrice(){
   let product = document.getElementById('boss-product').value;
