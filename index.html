@@ -278,7 +278,8 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
 </section>
 
 <script>
-var passwords =JSON.parsel(localstorage.getItem('staffPasswords') || '{director:'director123', miller:'miller123', sales:'sales123', delivery:'delivery123'};
+var passwords = {director:'director123',miller:'miller123',sales:'sales123',delivery:'delivery123'};
+  try{ var saved = JSON.parse(localStorage.getItem('staffPasswords')); if(saved && saved.director) passwords = saved; }catch(e){}
     function changeDirectorPass(){
   var np = document.getElementById('new-pass').value;
   if(!np || np.length < 4){ alert('Password lazima iwe herufi 4 au zaidi'); return; }
