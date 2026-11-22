@@ -109,14 +109,7 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 <h2>PRICES - ROSACORN (ROSA)</h2>
 <p>Confirm on WhatsApp before ordering.</p>
 <h3 style="margin-top:20px">🌽 ROSA - ROSACORN</h3>
-<table><tr><th>Size</th><th>Price (Ksh)</th></tr>
-<tr><td>1 Bale Rosa</td><td><b>1,630 - 1,660</b></td></tr>
-<tr><td>1/2 Bale Rosa</td><td><b>845</b></td></tr>
-<tr><td>5kg Rosa (1 Bag)</td><td><b>325</b></td></tr>
-<tr><td>10kg Rosa</td><td><b>650</b></td></tr>
-<tr><td>20kg Rosa</td><td><b>1,260</b></td></tr>
-<tr><td>22.5kg Rosa</td><td><b>1,410</b></td></tr>
-<tr><td>45kg Rosa</td><td><b>2,820</b></td></tr></table>
+<div id="shop-prices"></div>
 <div class="btns"><a class="btn green" href="https://wa.me/254720220892?text=Hello%20Novena%2C%20I%20want%20to%20order%20Rosa">ORDER ROSA ON WHATSAPP</a></div>
 </div>
 
@@ -339,6 +332,13 @@ function showSalesPrices(){
   let el = document.getElementById('sales-prices');
   if(el) el.innerHTML = html;
 }
+  function showShopPrices(){
+  let prices = getPrices();
+  let html = "";
+  for(let name in prices){ html += "<p><b>" + name + "</b> - KES " + prices[name] + "</p>"; }
+  let shop = document.getElementById('shop-prices');
+  if(shop) shop.innerHTML = html;
+}
 function bossUpdatePrice(){
   let product = document.getElementById('boss-product').value;
   let newPrice = document.getElementById('boss-price').value;
@@ -347,6 +347,7 @@ function bossUpdatePrice(){
   prices[product] = newPrice;
   localStorage.setItem('maua_prices', JSON.stringify(prices));
   showSalesPrices();
+  showShopPrices();
   alert(product + ' price updated to KES ' + newPrice + '. Sales will see it now.');
 }
 function bossNewOrder(){
@@ -359,6 +360,7 @@ function bossNewOrder(){
   alert('Order copied! Paste it in the Miller and Delivery Groups.');
 }
 showSalesPrices();
+showShopPrices();
 </script>
 
 </body>
