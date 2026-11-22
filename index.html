@@ -206,7 +206,7 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
   <h2>🔐 STAFF LOGIN</h2>
   <p>Select your role and enter your password.</p>
 
-  <div style="max-width:480px;margin:0 auto;text-align:left;background:#fff;padding:20px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08)">
+  <div id="login-b0x" style="max-width:480px;margin:0 auto;text-align:left;background:#fff;padding:20px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08)">
 
     <label><b>Select Role:</b></label>
     <select id="staff-role" style="width:100%;padding:12px;border-radius:10px;margin:8px 0 12px;border:1px solid #ddd">
@@ -299,7 +299,7 @@ function staffLogin(){
     document.getElementById('panel-sales').style.display = role==='sales' ? 'block' : 'none';
     document.getElementById('panel-delivery').style.display = role==='delivery' ? 'block' : 'none';
     showSalesPrices();
-    document.getElementById('staff').style.display = 'none';
+    document.getElementById('login-box').style.display = 'none';
 window.scrollTo(0,0);
   } else {
     document.getElementById('staff-error').innerHTML = 'Wrong password! Please try again.';
