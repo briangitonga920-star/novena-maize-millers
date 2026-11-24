@@ -467,14 +467,21 @@ showShopPrices();
 </section>
   <script>
 function sendOrderToSheet(productName, productPrice){
-  var name = prompt("Jina lako:");
+  var name = prompt("Jina lako");
   if(!name) return;
-  var phone = prompt("Namba ya simu:");
+  var phone = prompt("Namba ya simu");
   if(!phone) return;
-  var location = prompt("Location / Diani, Ukunda, Tiwi?");
+  var location = prompt("Location / Diani, Ukunda, Tiwi");
   if(!location) location = "";
-  var msg = "Habari Rosacorn! Nataka ku-order%0A%0AProduct: " + productName + "%0APrice: " + productPrice + "%0AJina: " + name + "%0ASimu: " + phone + "%0ALocation: " + location;
-window.open("https://wa.me/254720220892?text=" + msg, "_blank");
+  var msg = "Habari! Nataka ku-order. Product: " + productName + " Price: " + productPrice + " Jina: " + name + " Simu: " + phone + " Location: " + location;
+  var url = "https://wa.me/254720220892?text=" + encodeURIComponent(msg);
+  var a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
   fetch("https://script.google.com/macros/s/AKfycbzPbVN4BVEcTXHBzywLGe9NcDFhG81FE7dTOvyFhltgqJUQbgD2eRDl7XOID9JavEpJMw/exec", {
     method: "POST",
     mode: "no-cors",
