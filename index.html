@@ -316,7 +316,7 @@ function changeDirectorPass(){
   .then(() => alert('Password imebadilika kwa SIMU ZOTE! Miller, Sales, Delivery wote watatumia hii mpya: ' + np))
   .catch(() => alert('Imeshindwa kutuma - angalia internet'));
   document.getElementById('new-pass').value = '';
-}
+
   document.getElementById('new-pass').value = '';
   alert('Password mpya imesave! Kuanzia sasa tumia: ' + np);
 }
@@ -481,7 +481,7 @@ function sendOrderToSheet(productName, productPrice){
   document.body.appendChild(a);
   a.click();
   a.remove();
-}
+
   fetch("https://script.google.com/macros/s/AKfycbzPbVN4BVEcTXHBzywLGe9NcDFhG81FE7dTOvyFhltgqJUQbgD2eRDl7XOID9JavEpJMw/exec", {
     method: "POST",
     mode: "no-cors",
@@ -496,9 +496,9 @@ function sendOrderToSheet(productName, productPrice){
     })
   });
 
- var msg = "Habari Rosacorn! Nataka ku-order%0A%0AProduct: " + productName + "%0APrice: " + productPrice + "%0AJina: " + name + "%0ASimu: " + phone + "%0ALocation: " + location;
-window.open("https://wa.me/254720220892?text=" + msg, "_blank");
-alert("Asante " + name + "! Order yako imetumwa. Tafadhali tuma ujumbe WhatsApp.");
+ //var msg = "Habari Rosacorn! Nataka ku-order%0A%0AProduct: " + productName + "%0APrice: " + productPrice + "%0AJina: " + name + "%0ASimu: " + phone + "%0ALocation: " + location;
+//window.open("https://wa.me/254720220892?text=" + msg, "_blank");
+//alert("Asante " + name + "! Order yako imetumwa. Tafadhali tuma ujumbe WhatsApp.");
 }
 </script>
   <script>
