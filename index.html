@@ -510,6 +510,9 @@ document.addEventListener("DOMContentLoaded", function(){
       var name = card ? card.querySelector("b").innerText : "Product";
       var price = card ? card.querySelector("p").innerText : "";
       sendOrderToSheet(name, price);
+      var orders = JSON.parse(localStorage.getItem('myOrders')||'[]');
+orders.push({name: name, price: price, date: new Date().toLocaleString()});
+localStorage.setItem('myOrders', JSON.stringify(orders));
     });
   });
 });
@@ -517,7 +520,7 @@ function showMyOrders() {
   let orders = JSON.parse(localStorage.getItem('myOrders') || '[]');
   if (orders.length === 0) { alert("Huna order bado. Order kitu uone hapa!"); return; }
   let text = "📦 ORDERS ZAKO:\n\n";
-  orders.forEach((o, i) => { text += (i+1) + ". " + o.product + " - Ksh " + o.price + "\n   Tarehe: " + o.date + "\n   Status: " + o.status + "\n\n"; });
+  orders.forEach((o, i) => { text += (i+1) + ". " + (o.name || o.product) + " - " + o.price + " - " + o.date + "\n"; });
   alert(text);
 }
   </script>
