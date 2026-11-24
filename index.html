@@ -476,5 +476,18 @@ function sendOrderToSheet(productName, productPrice){
   alert("Asante " + name + "! Order yako ya " + productName + " imepokelewa. Tutakupigia.");
 }
 </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function(){
+  document.querySelectorAll(".order").forEach(function(btn){
+    btn.addEventListener("click", function(e){
+      e.preventDefault();
+      var card = btn.closest(".product");
+      var name = card ? card.querySelector("b").innerText : "Product";
+      var price = card ? card.querySelector("p").innerText : "";
+      sendOrderToSheet(name, price);
+    });
+  });
+});
+</script>
 </body>
 </html>
