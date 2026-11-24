@@ -458,7 +458,8 @@ function sendOrderToSheet(productName, productPrice){
   if(!phone) return;
   var location = prompt("Location / Diani, Ukunda, Tiwi?");
   if(!location) location = "";
-
+  var msg = "Habari Rosacorn! Nataka ku-order%0A%0AProduct: " + productName + "%0APrice: " + productPrice + "%0AJina: " + name + "%0ASimu: " + phone + "%0ALocation: " + location;
+window.open("https://wa.me/254720220892?text=" + msg, "_blank");
   fetch("https://script.google.com/macros/s/AKfycbzPbVN4BVEcTXHBzywLGe9NcDFhG81FE7dTOvyFhltgqJUQbgD2eRDl7XOID9JavEpJMw/exec", {
     method: "POST",
     mode: "no-cors",
