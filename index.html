@@ -513,6 +513,20 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   });
 });
-</script>
+function showMyOrders() {
+  let orders = JSON.parse(localStorage.getItem('myOrders') || '[]');
+  if (orders.length === 0) { alert("Huna order bado. Order kitu uone hapa!"); return; }
+  let text = "📦 ORDERS ZAKO:\n\n";
+  orders.forEach((o, i) => { text += (i+1) + ". " + o.product + " - Ksh " + o.price + "\n   Tarehe: " + o.date + "\n   Status: " + o.status + "\n\n"; });
+  alert(text);
+}
+  </script>
+function showMyOrders() {
+  let orders = JSON.parse(localStorage.getItem('myOrders') || '[]');
+  if (orders.length === 0) { alert("Huna order bado. Order kitu uone hapa!"); return; }
+  let text = "📦 ORDERS ZAKO:\n\n";
+  orders.forEach((o, i) => { text += (i+1) + ". " + o.product + " - Ksh " + o.price + "\n   Tarehe: " + o.date + "\n   Status: " + o.status + "\n\n"; });
+  alert(text);
+}
 </body>
 </html>
