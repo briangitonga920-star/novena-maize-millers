@@ -266,16 +266,16 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
       <button onclick="bossNewOrder()" style="width:100%;padding:12px;background:#000;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer">📤 SEND ORDER TO MILLER & DELIVERY</button>
     </div>
 
-    <div id="panel-miller" style="display:none">
-      <hr>
-      <h3>⚙️ MILLER PANEL</h3>
-      <p>✅ Maize Flour 5kg x 20 - For Isiolo Town</p>
-      <p>⏳ Maize Flour 2kg x 10 - Waiting</p>
-      <button onclick="alert('Job marked as DONE!')" style="width:100%;padding:12px;background:green;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer">MARK AS DONE</button>
-      <h3>Incoming Orders</h3>
-<div id="miller-orders">Loading...</div>
-    </div>
-
+   <div id="panel-miller" class="panel" style="display:none">
+  <h3>MILLER PANEL</h3>
+  <h4>B) ALL PRODUCTS - We Mill</h4>
+  <div id="miller-products">Loading products...</div>
+  <hr>
+  <h4>A) LIVE ORDERS - From Customers</h4>
+  <div id="miller-orders">Loading...</div>
+  <button onclick="showOrders()">Refresh Orders</button>
+  <button onclick="logoutStaff()">Logout</button>
+</div>
     <div id="panel-sales" style="display:none">
       <hr>
       <h3>🛒 SALES PANEL - Current Prices</h3>
@@ -351,6 +351,42 @@ window.scrollTo(0,0);
   var p = document.getElementById('staff-pass');
   if(p) p.value='';
   window.scrollTo(0,0);
+}
+
+  function showMillerProducts(){
+  var el = document.getElementById('miller-products');
+  if(!el) return;
+  var html = "";
+  for(var k in defaultPrices){
+    html += "<div style='border:1px solid #ddd;padding:8px;margin:5px'>"
+    + "<b>" + k + "</b> - Ksh " + defaultPrices[k]
+    + " <button onclick=\"alert('Job for " + k + " marked as DONE')\">Mark as DONE</button>"
+    + "</div>";
+  }
+  el.innerHTML = html;
+}
+
+function showOrders(){
+  showMillerProducts();
+  var el = document.getElementById('miller-orders');
+  if(!el) return;
+  el.innerHTML = "Loading...";
+  fetch(PASSWORD_SHEET_URL)
+    .then(r => r.json())
+    .then(data => {
+      if(data.orders && data.orders.length > 0){
+        var html = "";
+        data.orders.forEach(function(o){
+          html += "<div style='border:1px solid #ddd;padding:8px;margin:5px'><b>" + (o.product || o.item || "Order") + "</b> x " + (o.qty || o.quantity || "") + " - " + (o.customer || o.name || "") + "</div>";
+        });
+        el.innerHTML = html;
+      } else {
+        el.innerHTML = "No new orders right now. All products are listed above.";
+      }
+    })
+    .catch(e => {
+      el.innerHTML = "No new orders right now. All products are listed above. (Sheet not yet connected to orders)";
+    });
 }
 
 // --- PRICE SYSTEM: BOSS -> SALES ---
