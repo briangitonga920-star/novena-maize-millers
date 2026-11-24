@@ -523,7 +523,14 @@ function showMyOrders() {
   orders.forEach((o, i) => { text += (i+1) + ". " + (o.name || o.product) + " - " + o.price + " - " + o.date + "\n"; });
   alert(text);
 }
+ function clearMyOrders() {
+  if(confirm('Una uhakika unataka kufuta orders zako zote?')) {
+    localStorage.removeItem('myOrders');
+    alert('Orders zimefutwa!');
+  }
+} 
   </script>
 <button onclick="showMyOrders()"style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:12px 18px;border:none;border-radius:30px;cursor:pointer;z-index:9999;font-weight:bold;">📦 My Orders</button>
+  <button onclick="clearMyOrders()" style="position:fixed; bottom:70px; right:20px; background:#e74c3c; color:white; border:none; padding:10px 15px; border-radius:20px; z-index:9999;">🗑️ Clear Orders</button>
 </body>
 </html>
