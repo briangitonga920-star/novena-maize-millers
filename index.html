@@ -336,13 +336,27 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
 </section>
 
 <script>
-var passwords = {director:'director123',miller:'miller123',sales:'sales123',delivery:'delivery123'};
-  try{ var saved = JSON.parse(localStorage.getItem('staffPasswords')); if(saved && saved.director) passwords = saved; }catch(e){}
-    function changeDirectorPass(){
+var passwords = {director:'director123', miller:'miller123', sales:'sales123', delivery:'delivery123'};
+
+// BADILISHA HII LINK KUWA LINK YA GOOGLE SHEET YAKO YA PASSWORDS
+var PASSWORD_SHEET_URL = "WEKA HAPA LINK YA APPS SCRIPT YAKO";
+
+// Kila mtu akifungua site, inachukua password mpya kutoka Sheet
+fetch(PASSWORD_SHEET_URL)
+  .then(r => r.json())
+  .then(data => { if(data.passwords) passwords = data.passwords; })
+  .catch(e => { console.log("Tumetumia password za zamani"); });
+
+function changeDirectorPass(){
   var np = document.getElementById('new-pass').value;
   if(!np || np.length < 4){ alert('Password lazima iwe herufi 4 au zaidi'); return; }
   passwords.director = np;
-  localStorage.setItem('staffPasswords', JSON.stringify(passwords));
+  // Tuma password mpya kwa Sheet ili simu zote zipate
+  fetch(PASSWORD_SHEET_URL, { method: 'POST', body: JSON.stringify({role:'director', newPass: np}) })
+  .then(() => alert('Password imebadilika kwa SIMU ZOTE! Miller, Sales, Delivery wote watatumia hii mpya: ' + np))
+  .catch(() => alert('Imeshindwa kutuma - angalia internet'));
+  document.getElementById('new-pass').value = '';
+}
   document.getElementById('new-pass').value = '';
   alert('Password mpya imesave! Kuanzia sasa tumia: ' + np);
 }
