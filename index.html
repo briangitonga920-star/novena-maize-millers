@@ -450,5 +450,31 @@ showShopPrices();
 <a href="https://wa.me/254720220892?text=Hi!%20Nataka%20kuandika%20review%20ya%20maua%20niliyonunua" style="background:#25D366;color:#fff;padding:12px 25px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block">✍️ Write a Review on WhatsApp</a>
 <p style="color:#888;font-size:13px;margin-top:15px">Reviews zako zitaonekana hapa baada ya kuzithibitisha</p>
 </section>
+  <script>
+function sendOrderToSheet(productName, productPrice){
+  var name = prompt("Jina lako:");
+  if(!name) return;
+  var phone = prompt("Namba ya simu:");
+  if(!phone) return;
+  var location = prompt("Location / Diani, Ukunda, Tiwi?");
+  if(!location) location = "";
+
+  fetch("https://script.google.com/macros/s/AKfycbzPbVN4BVEcTXHBzywLGe9NcDFhG81FE7dTOvyFhltgqJUQbgD2eRDl7XOID9JavEpJMw/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      name: name,
+      phone: phone,
+      product: productName,
+      price: productPrice,
+      location: location,
+      date: new Date().toLocaleString()
+    })
+  });
+
+  alert("Asante " + name + "! Order yako ya " + productName + " imepokelewa. Tutakupigia.");
+}
+</script>
 </body>
 </html>
