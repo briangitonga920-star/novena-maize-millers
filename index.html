@@ -161,13 +161,7 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
 <div id="adminEditList" style="max-height:280px;overflow:auto;margin-top:10px"></div>
 <button onclick="copyNewPrices()" style="width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-radius:8px;margin-top:10px">📋 COPY BEI MPYA - WEKA NPOINT</button>
 <p id="copyMsg" style="font-size:13px;color:green;text-align:center"></p>
-  <div style="background:#fff3cd;padding:12px;border-radius:10px;margin-top:12px">
-<b>🔑 BADILISHA PASSWORD</b><br>
-<input id="newAdminPass" type="text" placeholder="Andika password mpya hapa" style="margin:8px 0">
-<button class="btn primary" onclick="changeAdminPassword()">SAVE PASSWORD MPYA</button>
-<p id="passMsg" style="font-size:13px"></p>
-</div>
-</div>
+  
 <div id="adminLivePrices" style="font-size:14px;background:#f9f9f9;border-radius:10px;padding:12px;max-height:200px;overflow:auto">Inapakia...</div>
 <a href="https://www.npoint.io" target="_blank" style="display:block;text-align:center;background:#000;color:#fff;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin:8px 0">🔗 FUNGUA NPOINT.IO</a>
 <button onclick="adminLogout()" style="width:100%;padding:12px;background:#e74c3c;color:#fff;border:0;border-radius:8px">LOGOUT</button>
@@ -176,7 +170,9 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
 </div>
 </div>
 <script>
-function getAdminPass(){ return localStorage.getItem("novena_admin_pass") || "novena2026"; }
+let SERVER_PASS = "novena2026";
+fetch(NPOINT_URL).then(r=>r.json()).then(d=>{ if(d.adminPass) SERVER_PASS = d.adminPass; });
+function getAdminPass(){ return SERVER_PASS; }
 function adminLogin(){ if(document.getElementById("adminPass").value === getAdminPass()){
 function buildAdminEditor(products){
   var box=document.getElementById("adminEditList"); if(!box) return;
