@@ -143,12 +143,15 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 <script>
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function sendWA(e){e.preventDefault();var n=document.getElementById('name').value;var m=document.getElementById('msg').value;window.open('https://wa.me/254720220892?text='+encodeURIComponent('Hello Novena, I am '+n+'. '+m));}
+
+function chgQ(id,d){var e=document.getElementById('q-'+id);if(!e)return;var v=parseInt(e.value||1)+d;if(v<1)v=1;e.value=v;}
+function ordQ(name,price,id){var e=document.getElementById('q-'+id);var q=e?parseInt(e.value||1):1;var tot=q*price;var msg='Habari Novena! Nataka ku-order: '+name+' x '+q+' = KSh '+tot+'. Tafadhali ni-confirm.';window.open('https://wa.me/254793308004?text='+encodeURIComponent(msg),'_blank');}
 </script>
 <div id="admin" class="page">
 <div style="background:#fff;border:2px solid #228b22;border-radius:14px;padding:22px;max-width:600px;margin:15px auto">
 <div id="adminLoginBox">
 <h2 style="color:#228b22">🔐 Admin Login</h2>
-<p>Staff wa Novena pekee.</p>
+<p>Admin Only.</p>
 <input id="adminPass" type="password" placeholder="Password" style="width:100%;padding:12px;margin:8px 0">
 <button onclick="adminLogin()" style="width:100%;padding:14px;background:#000;color:#fff;border:0;border-radius:8px">LOGIN</button>
 </div>
