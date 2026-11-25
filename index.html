@@ -194,285 +194,61 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function sendWA(e){e.preventDefault();var n=document.getElementById('name').value;var m=document.getElementById('msg').value;window.open('https://wa.me/254720220892?text='+encodeURIComponent('Hello Novena, I am '+n+'. '+m));}
 </script>
-
-
-
-<!-- STAFF PANEL - NOVENA FINAL -->
-<section id="staff" class="page" style="display:block">
-  <h2>🔐 STAFF LOGIN</h2>
-  <p>Select your role and enter your password.</p>
-
-  <div id="login-b0x" style="max-width:480px;margin:0 auto;text-align:left;background:#fff;padding:20px;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,0.08)">
-
-    <label><b>Select Role:</b></label>
-    <select id="staff-role" style="width:100%;padding:12px;border-radius:10px;margin:8px 0 12px;border:1px solid #ddd">
-      <option value="director">DIRECTOR</option>
-      <option value="miller">MILLER - Milling</option>
-      <option value="sales">SALES - Selling</option>
-      <option value="delivery">DELIVERY - Delivery</option>
-    </select>
-
-    <label><b>Password:</b></label>
-    <input type="password" id="staff-pass" placeholder="Enter password" style="width:100%;padding:12px;border-radius:10px;margin:8px 0 12px;border:1px solid #ddd">
-
-    <button onclick="staffLogin()" style="width:100%;padding:13px;background:#000;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer">LOGIN</button>
-    <p id="staff-error" style="color:red;text-align:center"></p>
-    </div>
-
-    <div id="panel-director" style="display:none">
-      <div style="text-align:right;">
-  <button onclick="logoutStaff()" style="background:#333;color:white;padding:8px 15px;border:none;border-radius:5px;cursor:pointer;">Logout</button>
+<!-- ADMIN - NOVENA -->
+<section id="admin" style="display:none;padding:30px 15px;max-width:600px;margin:auto">
+<h2>Admin Login</h2>
+<div id="adminLoginBox">
+<input id="adminPass" type="password" placeholder="Password" style="width:100%;padding:12px">
+<button onclick="adminLogin()" style="width:100%;padding:12px;background:#000;color:#fff;border:0;margin-top:8px">LOGIN</button>
+<p style="font-size:13px">Password: novena2026</p>
 </div>
-      <hr>
-      <h3>👑 DIRECTOR DASHBOARD</h3>
-      <div style="background:#fff3cd;padding:12px;border-radius:8px;margin:10px 0;">
-<b>🔒 Change My Password</b><br>
-<input id="new-pass" type="password" placeholder="New Password" style="padding:8px;width:90%;margin:5px 0;"><br>
-<button onclick="changeDirectorPass()" style="padding:8px 15px;background:#000;color:#fff;border:none;border-radius:5px;">Save New Password</button>
+
+<div id="adminDash" style="display:none">
+<h2>Welcome Admin 👑</h2>
+<p>Badilisha Bei Hapa:</p>
+
+<label>Broiler 1kg - KSh</label>
+<input id="a-broiler" type="number" placeholder="450" style="width:100%;padding:10px;margin:5px 0">
+<label>Kienyeji 1kg - KSh</label>
+<input id="a-kienyeji" type="number" placeholder="750" style="width:100%;padding:10px;margin:5px 0">
+<label>Layers 1kg - KSh</label>
+<input id="a-layers" type="number" placeholder="400" style="width:100%;padding:10px;margin:5px 0">
+<label>Chicks Day Old - KSh</label>
+<input id="a-chicks" type="number" placeholder="120" style="width:100%;padding:10px;margin:5px 0">
+<label>Eggs Tray - KSh</label>
+<input id="a-eggs" type="number" placeholder="550" style="width:100%;padding:10px;margin:5px 0">
+<label>Feed Broiler Starter 50kg - KSh</label>
+<input id="a-feed1" type="number" placeholder="4200" style="width:100%;padding:10px;margin:5px 0">
+<label>Feed Layers Mash 50kg - KSh</label>
+<input id="a-feed2" type="number" placeholder="3800" style="width:100%;padding:10px;margin:5px 0">
+
+<button onclick="saveAdmin()" style="width:100%;padding:14px;background:green;color:#fff;border:0;margin-top:10px;font-weight:bold">💾 SAVE PRICES</button>
+<button onclick="adminLogout()" style="width:100%;padding:12px;background:red;color:#fff;border:0;margin-top:8px">LOGOUT</button>
+<button onclick="show('home')" style="width:100%;padding:12px;margin-top:8px">BACK TO HOME</button>
+<p id="adminMsg" style="text-align:center;color:green"></p>
 </div>
-      <h4>💰 UPDATE PRICE</h4>
-      <select id="boss-product" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid #ddd">
-        <option>Maize Flour 5kg</option>
-        <option>Maize Flour 2kg</option>
-        <option>Rosa corn 2kg</option>
-        <option>Rosa - 1 Bale</option>
-        <option>Rosa - 1/2 Bale</option>
-        <option>Rosa - 5kg</option>
-        <option>Rosa - 10kg</option>
-        <option>Rosa - 20kg</option>
-        <option>Rosa - 22.5kg</option>
-        <option>Rosa - 45kg</option>
-        <option>Kienyeji Mash 70kg</option>
-        <option>Growers Mash 70kg</option>
-        <option>Layers Mash 70kg</option>
-        <option>Dairy Meal 70kg</option>
-        <option>Sow & Weaner 70kg</option>
-        <option>Pig Finisher 70kg</option>
-        <option>Bran Mix 40kg</option>
-        <option>Maize Germ 50kg</option>
-        <option>Chick Mash 70kg</option>
-      </select>
-      <input id="boss-price" type="number" placeholder="New Price KES" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid #ddd">
-      <button onclick="bossUpdatePrice()" style="width:100%;padding:12px;background:#d4af37;color:#000;border:none;border-radius:10px;font-weight:bold;cursor:pointer">UPDATE PRICE & SEND TO SALES</button>
-      <hr>
-      <h4>📝 ADD NEW ORDER</h4>
-      <input id="o-name" placeholder="Customer Name" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid #ddd">
-      <select id="o-product" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid #ddd">
-        <option>Maize Flour 5kg</option>
-        
-      </select>
-      <input id="o-qty" type="number" value="10" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid #ddd">
-      <input id="o-place" placeholder="Delivery Location" style="width:100%;padding:10px;margin-bottom:8px;border-radius:8px;border:1px solid #ddd">
-      <button onclick="bossNewOrder()" style="width:100%;padding:12px;background:#000;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer">📤 SEND ORDER TO MILLER & DELIVERY</button>
-    </div>
-
-   <div id="panel-miller" class="panel" style="display:none">
-  <h3>MILLER PANEL</h3>
-  <h4>B) ALL PRODUCTS - We Mill</h4>
-  <div id="miller-products">Loading products...</div>
-  <hr>
-  <h4>A) LIVE ORDERS - From Customers</h4>
-  <div id="miller-orders">Loading...</div>
-  <button onclick="showOrders()">Refresh Orders</button>
-  <button onclick="logoutStaff()">Logout</button>
-</div>
-    <div id="panel-sales" style="display:none">
-      <hr>
-      <h3>🛒 SALES PANEL - Current Prices</h3>
-      <p style="font-size:13px;color:#666">Prices updated by BOSS appear here automatically.</p>
-      <div id="sales-prices"></div>
-    </div>
-
-    <div id="panel-delivery" style="display:none">
-      <hr>
-      <h3>🛵 DELIVERY PANEL</h3>
-      <p>📦 Juma - Isiolo Town - 10 bags</p>
-      <button onclick="alert('Delivery marked as DELIVERED!')" style="width:100%;padding:12px;background:blue;color:#fff;border:none;border-radius:10px;font-weight:bold;cursor:pointer">MARK AS DELIVERED</button>
-      <h3>Orders to Deliver</h3>
-<div id="delivery-orders">Loading...</div>
-    </div>
-
-  </div>
 </section>
-
 <script>
-var passwords = {director:'director123', miller:'miller123', sales:'sales123', delivery:'delivery123'};
-
-// BADILISHA HII LINK KUWA LINK YA GOOGLE SHEET YAKO YA PASSWORDS
-var PASSWORD_SHEET_URL = "https://script.google.com/macros/s/AKfycbzPbVN4BVEcTXHBzywLGe9NcDFhG81FE7dTOvyFhltgqJUQbgD2eRDl7XOID9JavEpJMw/exec";
-
-// Kila mtu akifungua site, inachukua password mpya kutoka Sheet
-fetch(PASSWORD_SHEET_URL)
-  .then(r => r.json())
-  .then(data => { if(data.passwords) passwords = data.passwords; })
-  .catch(e => { console.log("Tumetumia password za zamani"); });
-
-function changeDirectorPass(){
-  var np = document.getElementById('new-pass').value;
-  if(!np || np.length < 4){ alert('Password lazima iwe herufi 4 au zaidi'); return; }
-  passwords.director = np;
-  // Tuma password mpya kwa Sheet ili simu zote zipate
-  fetch(PASSWORD_SHEET_URL, { method: 'POST', body: JSON.stringify({role:'director', newPass: np}) })
-  .then(() => alert('Password imebadilika kwa SIMU ZOTE! Miller, Sales, Delivery wote watatumia hii mpya: ' + np))
-  .catch(() => alert('Imeshindwa kutuma - angalia internet'));
-  document.getElementById('new-pass').value = '';
-
-  document.getElementById('new-pass').value = '';
-  alert('Password mpya imesave! Kuanzia sasa tumia: ' + np);
+function adminLogin(){
+  if(document.getElementById('adminPass').value==='novena2026'){
+    document.getElementById('adminLoginBox').style.display='none';
+    document.getElementById('adminDash').style.display='block';
+  } else { alert('Wrong Password!'); }
 }
- function staffLogin(){
-  var role = document.getElementById('staff-role').value;
-  var pass = document.getElementById('staff-pass').value;
-  
-  if(pass === passwords[role]){
-    document.getElementById('staff-error').innerHTML = '';
-    document.getElementById('panel-director').style.display = role==='director' ? 'block' : 'none';
-    document.getElementById('panel-miller').style.display = role==='miller' ? 'block' : 'none';
-    document.getElementById('panel-sales').style.display = role==='sales' ? 'block' : 'none';
-    document.getElementById('panel-delivery').style.display = role==='delivery' ? 'block' : 'none';
-    showSalesPrices();
-    showOrders();
-    document.getElementById('login-box').style.display = 'none';
-window.scrollTo(0,0);
-  } else {
-    document.getElementById('staff-error').innerHTML = 'Wrong password! Please try again.';
-  }
+function adminLogout(){
+  document.getElementById('adminDash').style.display='none';
+  document.getElementById('adminLoginBox').style.display='block';
+  document.getElementById('adminPass').value='';
+  show('home');
+  alert('Logged out! Bye Admin');
 }
-
-  function logoutStaff(){
-  var ids = ['staff','staff-section','login-box','staff-login-box','panel-director','panel-manager','panel-cashier','panel-secretary','panel-driver'];
-  ids.forEach(function(id){
-    var el = document.getElementById(id);
-    if(el){
-      if(id.indexOf('panel-')===0){ el.style.display='none'; }
-      else { el.style.display='block'; }
-    }
-  });
-  var p = document.getElementById('staff-pass');
-  if(p) p.value='';
-  window.scrollTo(0,0);
+function saveAdmin(){
+  document.getElementById('adminMsg').innerText='✅ Saved! Bei mpya zimehifadhiwa.';
 }
-
- function showMillerProducts(){
-  var el = document.getElementById('miller-products');
-  if(!el) return;
-  var html = "";
-  for(var k in defaultPrices){
-    html += "<div><b>" + k + "</b> - Ksh " + defaultPrices[k] + "</div>";
-  }
-  el.innerHTML = html;
-}
-
-function showOrders(){
-  var el = document.getElementById('miller-orders');
-  if(!el) return;
-  el.innerHTML = "No new orders right now";
-}
-// --- PRICE SYSTEM: BOSS -> SALES ---
-let defaultPrices = {
-  "Maize Flour 5kg": 650,
-  "Maize Flour 2kg": 280,
-  "Rosa Sweet 2kg": 320,
-  "Rosa - 1 Bale": 1660,
-  "Rosa - 1/2 Bale": 845,
-  "Rosa - 5kg": 325,
-  "Rosa - 10kg": 650,
-  "Rosa - 20kg": 1260,
-  "Rosa - 22.5kg": 1410,
-  "Rosa - 45kg": 2820,
-  "Kienyeji Mash 70kg": 2400,
-  "Growers Mash 70kg": 2900,
-  "Layers Mash 70kg": 2900,
-  "Dairy Meal 70kg": 3000,
-  "Sow & Weaner 70kg": 2200,
-  "Pig Finisher 70kg": 2200,
-  "Bran Mix 40kg": 1400,
-  "Maize Germ 50kg": 2000,
-  "Chick Mash 70kg": 2150
-};
-function getPrices(){
-  let saved = localStorage.getItem('maua_prices');
-  return saved ? JSON.parse(saved) : defaultPrices;
-}
-function showSalesPrices(){
-  let prices = getPrices();
-  let html = "";
-  for(let name in prices){ html += "<p><b>" + name + "</b> - KES " + prices[name] + "</p>"; }
-  let el = document.getElementById('sales-prices');
-  if(el) el.innerHTML = html;
-}
-  function showShopPrices(){
-  let prices = getPrices();
-  let html = '<div class="price-grid">';
-  for(let name in prices){
-    let isOut = name.includes('2kg');
-    html += '<div class="price-card">'
-    + '<b>'+name+'</b><br>'
-    + '<div class="kes">'+(isOut ? '<span style="color:red;font-size:15px;">NOT AVAILABLE</span>' : 'KES '+prices[name])+'</div>'
-    + '<a href="https://wa.me/254720220892?text=Nataka%20'+name+'" style="background:#25D366;color:#fff;padding:8px 12px;border-radius:8px;text-decoration:none;display:inline-block;font-size:13px;">Order on WhatsApp</a>'
-    + '</div>';
-  }
-  html += '</div>';
-  document.getElementById('shop-prices').innerHTML = html;
-}
-function bossUpdatePrice(){
-  let product = document.getElementById('boss-product').value;
-  let newPrice = document.getElementById('boss-price').value;
-  if(!newPrice){ alert('Please enter a price first'); return; }
-  
-  let prices = getPrices();
-  prices[product] = newPrice;
-  localStorage.setItem('maua_prices', JSON.stringify(prices));
-  showSalesPrices();
-  showShopPrices();
-
-  // TUMA KWA SHEET - NDIO WOTE WAONE
-  fetch("https://script.google.com/macros/s/AKfycbzPbVN4BVEcTXHBzywLGe9NcDFhG81FE7dTOvyFhltgqJUQbgD2eRDl7XOID9JavEpJMw/exec", {
-    method: "POST",
-    mode: "no-cors",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      action: "updatePrice",
-      product: product,
-      price: newPrice
-    })
-  });
-
-  alert(product + ' price updated to KES ' + newPrice + '. Wote wataona sasa!');
-}
-function bossNewOrder(){
-  var n = document.getElementById('o-name').value;
-  var p = document.getElementById('o-product').value;
-  var q = document.getElementById('o-qty').value;
-  var pl = document.getElementById('o-place').value;
-  if(!n || !q) return alert('Weka jina na idadi!');
-
-  // 1. Save order ili Miller na Delivery waione
-  var orders = JSON.parse(localStorage.getItem('novena_orders') || '[]');
-  orders.push({name:n, product:p, qty:q, place:pl, time:new Date().toLocaleString(), status:'New'});
-  localStorage.setItem('novena_orders', JSON.stringify(orders));
-
-  // 2. Kama zamani - copy kwa WhatsApp
-  var msg = 'NEW ORDER - NOVENA: Customer ' + n + ' - ' + p + ' x ' + q + ' - Deliver to ' + pl;
-  navigator.clipboard.writeText(msg);
-  alert('Order ime-save! Miller na Delivery wataiona sasa.');
-  showOrders();
-}
-
-function showOrders(){
-  var orders = JSON.parse(localStorage.getItem('novena_orders') || '[]');
-  var html = orders.length ? '' : 'Hakuna order bado.';
-  orders.slice().reverse().forEach(function(o){
-    html += '<div style="background:#fff;padding:10px;margin:5px 0;border-radius:5px;text-align:left;">' + o.name + ' - ' + o.product + ' x ' + o.qty + '<br><small>' + o.place + ' | ' + o.time + ' | ' + o.status + '</small></div>';
-  });
-  var m = document.getElementById('miller-orders');
-  if(m) m.innerHTML = html;
-  var d = document.getElementById('delivery-orders');
-  if(d) d.innerHTML = html;
-}
-showSalesPrices();
-showShopPrices();
 </script>
+
+
+
 <section style="padding:30px 15px;text-align:center">
 <h2 style="font-size:24px;margin-bottom:10px">What Our Customers Say</h2>
 <p style="color:#666;margin-bottom:20px">Umeshawahi kununua unga kwetu? Tuambie ulivyojisikia</p>
