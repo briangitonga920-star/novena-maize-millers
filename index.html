@@ -161,6 +161,12 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
 <div id="adminEditList" style="max-height:280px;overflow:auto;margin-top:10px"></div>
 <button onclick="copyNewPrices()" style="width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-radius:8px;margin-top:10px">📋 COPY BEI MPYA - WEKA NPOINT</button>
 <p id="copyMsg" style="font-size:13px;color:green;text-align:center"></p>
+  <div style="background:#fff3cd;padding:12px;border-radius:10px;margin-top:12px">
+<b>🔑 BADILISHA PASSWORD</b><br>
+<input id="newAdminPass" type="text" placeholder="Andika password mpya hapa" style="margin:8px 0">
+<button class="btn primary" onclick="changeAdminPassword()">SAVE PASSWORD MPYA</button>
+<p id="passMsg" style="font-size:13px"></p>
+</div>
 </div>
 <div id="adminLivePrices" style="font-size:14px;background:#f9f9f9;border-radius:10px;padding:12px;max-height:200px;overflow:auto">Inapakia...</div>
 <a href="https://www.npoint.io" target="_blank" style="display:block;text-align:center;background:#000;color:#fff;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin:8px 0">🔗 FUNGUA NPOINT.IO</a>
@@ -170,7 +176,8 @@ function sendWA(e){e.preventDefault();var n=document.getElementById('name').valu
 </div>
 </div>
 <script>
-function adminLogin(){if(document.getElementById('adminPass').value==='novena2026'){document.getElementById('adminLoginBox').style.display='none';document.getElementById('adminDash').style.display='block';}else{alert('Wrong Password!');}}
+function getAdminPass(){ return localStorage.getItem("novena_admin_pass") || "novena2026"; }
+function adminLogin(){ if(document.getElementById("adminPass").value === getAdminPass()){
 function buildAdminEditor(products){
   var box=document.getElementById("adminEditList"); if(!box) return;
   box.innerHTML=products.map(function(p,i){ return '<div style="display:flex;gap:8px;align-items:center;margin:6px 0"><span style="flex:1;font-size:13px">'+p.name+' - '+p.size+'</span><input id="edit-price-'+i+'" type="number" value="'+p.price+'" style="width:110px;margin:0;padding:8px"></div>'; }).join("");
