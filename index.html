@@ -143,24 +143,42 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function sendWA(e){e.preventDefault();var n=document.getElementById('name').value;var m=document.getElementById('msg').value;window.open('https://wa.me/254720220892?text='+encodeURIComponent('Hello Novena, I am '+n+'. '+m));}
 </script>
-<section id="admin" style="display:none;padding:30px 15px;max-width:600px;margin:auto">
-<h2>Admin Login</h2>
+<div id="admin" class="page">
+<div style="background:#fff;border:2px solid #228b22;border-radius:14px;padding:22px;max-width:600px;margin:15px auto">
 <div id="adminLoginBox">
-<input id="adminPass" type="password" placeholder="Password" style="width:100%;padding:12px">
-<button onclick="adminLogin()" style="width:100%;padding:12px;background:#000;color:#fff;border:0;margin-top:8px">LOGIN</button>
-<p style="font-size:13px">Password: novena2026</p>
+<h2 style="color:#228b22">🔐 Admin Login</h2>
+<p>Staff wa Novena pekee.</p>
+<input id="adminPass" type="password" placeholder="Password" style="width:100%;padding:12px;margin:8px 0">
+<button onclick="adminLogin()" style="width:100%;padding:14px;background:#000;color:#fff;border:0;border-radius:8px">LOGIN</button>
 </div>
 <div id="adminDash" style="display:none">
 <h2>Welcome Admin 👑</h2>
-<p>Badilisha Bei Hapa - Nenda NPoint ili kubadilisha bei za live:</p>
-<a href="https://npoint.io/docs/73745e09e2d0a79d888d" target="_blank" style="display:block;text-align:center;background:#228b22;color:#fff;padding:14px;border-radius:8px;text-decoration:none;font-weight:bold">OPEN NPOINT - BADILISHA BEI</a>
-<button onclick="adminLogout()" style="width:100%;padding:12px;background:red;color:#fff;border:0;margin-top:8px">LOGOUT</button>
-<button onclick="show('home')" style="width:100%;padding:12px;margin-top:8px">BACK TO HOME</button>
-<p id="adminMsg" style="text-align:center;color:green"></p>
+<p>Novena Maize Millers • Maua • Bei LIVE kutoka NPoint</p>
+<div style="background:#fff3cd;border:2px solid #ffeb3b;border-radius:10px;padding:14px;margin:14px 0">
+<h3>✏️ CHANGE PRICES HERE</h3>
+<p style="font-size:13px">1. Badilisha bei hapa chini<br>2. Bonyeza COPY BEI MPYA<br>3. Nenda npoint.io > bin 73745e09e2d0a79d888d > paste > Save</p>
+<div id="adminEditList" style="max-height:280px;overflow:auto;margin-top:10px"></div>
+<button onclick="copyNewPrices()" style="width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-radius:8px;margin-top:10px">📋 COPY BEI MPYA - WEKA NPOINT</button>
+<p id="copyMsg" style="font-size:13px;color:green;text-align:center"></p>
 </div>
-</section>
+<div id="adminLivePrices" style="font-size:14px;background:#f9f9f9;border-radius:10px;padding:12px;max-height:200px;overflow:auto">Inapakia...</div>
+<a href="https://www.npoint.io" target="_blank" style="display:block;text-align:center;background:#000;color:#fff;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin:8px 0">🔗 FUNGUA NPOINT.IO</a>
+<button onclick="adminLogout()" style="width:100%;padding:12px;background:#e74c3c;color:#fff;border:0;border-radius:8px">LOGOUT</button>
+<button onclick="show('home')" style="width:100%;padding:12px;margin-top:8px">BACK TO HOME</button>
+</div>
+</div>
+</div>
 <script>
 function adminLogin(){if(document.getElementById('adminPass').value==='novena2026'){document.getElementById('adminLoginBox').style.display='none';document.getElementById('adminDash').style.display='block';}else{alert('Wrong Password!');}}
+function buildAdminEditor(products){
+  var box=document.getElementById("adminEditList"); if(!box) return;
+  box.innerHTML=products.map(function(p,i){ return '<div style="display:flex;gap:8px;align-items:center;margin:6px 0"><span style="flex:1;font-size:13px">'+p.name+' - '+p.size+'</span><input id="edit-price-'+i+'" type="number" value="'+p.price+'" style="width:110px;margin:0;padding:8px"></div>'; }).join("");
+  window._currentProducts=products;
+}
+function copyNewPrices(){
+  var updated=window._currentProducts.map(function(p,i){ return {name:p.name,size:p.size,price:Number(document.getElementById("edit-price-"+i).value)}; });
+  navigator.clipboard.writeText(JSON.stringify({products:updated},null,2)).then(function(){ document.getElementById("copyMsg").innerText="✅ Imecopywa! Sasa fungua NPoint, paste, Save."; });
+}
 function adminLogout(){document.getElementById('adminDash').style.display='none';document.getElementById('adminLoginBox').style.display='block';document.getElementById('adminPass').value='';show('home');alert('Logged out! Bye Admin');}
 function saveAdmin(){document.getElementById('adminMsg').innerText='✅ Saved! Bei mpya zimehifadhiwa.';}
 </script>
@@ -199,6 +217,7 @@ function renderFromProducts(products){
     html += '</table>';
   });
   document.getElementById("feedsList").innerHTML = html;
+  buildAdminEditor(products);
   bindOrders();
 }
 function bindOrders(){
