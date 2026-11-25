@@ -419,12 +419,26 @@ function bossUpdatePrice(){
   let product = document.getElementById('boss-product').value;
   let newPrice = document.getElementById('boss-price').value;
   if(!newPrice){ alert('Please enter a price first'); return; }
+  
   let prices = getPrices();
   prices[product] = newPrice;
   localStorage.setItem('maua_prices', JSON.stringify(prices));
   showSalesPrices();
   showShopPrices();
-  alert(product + ' price updated to KES ' + newPrice + '. Sales will see it now.');
+
+  // TUMA KWA SHEET - NDIO WOTE WAONE
+  fetch("https://script.google.com/macros/s/AKfycbzPbVN4BVEcTXHBzywLGe9NcDFhG81FE7dTOvyFhltgqJUQbgD2eRDl7XOID9JavEpJMw/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      action: "updatePrice",
+      product: product,
+      price: newPrice
+    })
+  });
+
+  alert(product + ' price updated to KES ' + newPrice + '. Wote wataona sasa!');
 }
 function bossNewOrder(){
   var n = document.getElementById('o-name').value;
