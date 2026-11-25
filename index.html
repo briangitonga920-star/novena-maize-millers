@@ -47,7 +47,8 @@ tr:nth-child(even){background:#f5f5f5}
 footer{background:#000;color:#fff;text-align:center;padding:15px;margin-top:20px}
 input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
 button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-radius:8px;font-weight:bold}
-.products{display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:10px}
+
+  .products{display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:10px}
 .product{background:white;padding:15px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);text-align:center}
 .product b{font-size:17px;display:block;margin-bottom:5px}
 .product p{font-weight:bold;margin:5px 0}
@@ -55,13 +56,16 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 </style>
 </head>
 <body>
+
 <div class="top"><span>📍 Behind Shell, Iriene - Maua</span><span>0793 308 004</span></div>
+
 <header>
 <img src="logo.jpg" alt="Novena Logo">
 <h1>NOVENA MAIZE MILLERS</h1>
 <p>ROSACORN • ANIMAL FEEDS</p>
 <p style="margin-top:5px;font-size:14px;font-weight:bold">📍 Behind Shell Petrol Station, Iriene Area, Maua Town</p>
 </header>
+
 <nav>
 <a onclick="show('home')">HOME</a>
 <a onclick="show('about')">ABOUT</a>
@@ -70,8 +74,11 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 <a onclick="show('gallery')">GALLERY</a>
 <a onclick="show('location')">LOCATION</a>
 <a onclick="show('contact')">CONTACT</a>
-<a onclick="show('admin')" style="color:#ffeb3b">🔐 ADMIN</a>
+
+
 </nav>
+
+<!-- HOME -->
 <div id="home" class="page active">
 <div class="hero">
 <img src="rosa-team.jpg">
@@ -81,6 +88,7 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 <a class="btn green" href="https://wa.me/254720220892?text=Hello%20Novena%2C%20I%20want%20to%20order">ORDER ON WHATSAPP</a>
 <a class="btn yellow" href="tel:+254793308004">CALL NOW - 0793 308 004</a>
 </div>
+
 <div class="location-box">
 <h2>📍 WHERE TO FIND US</h2>
 <p><b>Novena Maize Millers</b><br><b>Behind Shell Petrol Station,</b><br><b>Iriene Area, Maua Town</b><br>Meru County</p>
@@ -91,30 +99,68 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 </div>
 </div>
 </div>
+
+<!-- ABOUT -->
 <div id="about" class="page">
 <h2>WHO ARE WE?</h2><br>
 <p><b>Novena Millers</b> is a real mill in Maua Town, Meru County. We focus on only 2 things and we do them well.</p><br>
 <p>1. <b>ROSACORN (ROSA)</b> - Grade 1 Maize Meal<br>2. <b>ANIMAL FEEDS</b> - 9 Types for Chickens, Pigs & Cows</p>
 <div class="location-box"><h2>📍 OUR LOCATION</h2><p><b>Behind Shell Petrol Station, Iriene Area</b><br>Maua Town, Meru County</p></div>
 </div>
+
+<!-- PRICES -->
 <div id="prices" class="page">
 <h2>Prices - ROSACORN (ROSA)</h2>
-<p>Confirm on WhatsApp before ordering. Bei zinatoka NPoint - ukibadilisha huko, hapa inabadilika yenyewe.</p>
-<div class="products" id="rosaProducts"><p>Inapakia bei...</p></div>
+<p>Confirm on WhatsApp before ordering.</p>
+<div class="products">
+<div class="product"><b>Rosa - 1 Bale</b><p>KES 1660</p><a class="order" href="https://wa.me/254728220082">Order on WhatsApp</a></div>
+<div class="product"><b>Rosa - 1/2 Bale</b><p>KES 845</p><a class="order" href="https://wa.me/254728220082">Order on WhatsApp</a></div>
+<div class="product"><b>Rosa - 5kg</b><p>KES 325</p><a class="order" href="https://wa.me/254728220082">Order on WhatsApp</a></div>
+<div class="product"><b>Rosa - 10kg</b><p>KES 650</p><a class="order" href="https://wa.me/254728220082">Order on WhatsApp</a></div>
+<div class="product"><b>Rosa - 20kg</b><p>KES 1260</p><a class="order" href="https://wa.me/254728220082">Order on WhatsApp</a></div>
+<div class="product"><b>Rosa - 22.5kg</b><p>KES 1410</p><a class="order" href="https://wa.me/254728220082">Order on WhatsApp</a></div>
+<div class="product"><b>Rosa - 45kg</b><p>KES 2820</p><a class="order" href="https://wa.me/254728220082">Order on WhatsApp</a></div>
+<div class="product"><b>Kienyeji Mash 70kg</b><p>KES 2400</p><a class="order" href="https://wa.me/254728220082">Order on WhatsApp</a></div>
+<div class="product"><b>Growers Mash 70kg</b><p>KES 2900</p><a class="order" href="https://wa.me/254728220082">Order on WhatsApp</a></div>
+
 </div>
+</div>
+
+<!-- ANIMAL FEEDS -->
 <div id="feeds" class="page">
 <img src="feeds-poster.jpg" style="width:100%;border-radius:10px">
 <h2 style="margin-top:15px">NOVENA ANIMAL FEEDS</h2>
 <p>Quality Feeds for All Animals - Chickens, Pigs, Cows, Calves & Bulls.<br><b>Available in 70KG | 20KG | 10KG | 5KG Sacks</b></p>
-<div id="feedsList"><p>Inapakia feeds...</p></div>
+<h3 class="feed-title">🐔 KIENYEJI MASH</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,400</b></td></tr><tr><td>20KGS</td><td><b>720</b></td></tr><tr><td>10KGS</td><td><b>360</b></td></tr><tr><td>5KGS</td><td><b>180</b></td></tr></table>
+<h3 class="feed-title">🐔 GROWERS MASH</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,900</b></td></tr><tr><td>20KGS</td><td><b>980</b></td></tr><tr><td>10KGS</td><td><b>490</b></td></tr><tr><td>5KGS</td><td><b>270</b></td></tr></table>
+<h3 class="feed-title">🥚 LAYERS MASH</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,900</b></td></tr><tr><td>20KGS</td><td><b>980</b></td></tr><tr><td>10KGS</td><td><b>490</b></td></tr><tr><td>5KGS</td><td><b>270</b></td></tr></table>
+<h3 class="feed-title">🐄 DAIRY MEAL</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>3,000</b></td></tr><tr><td>20KGS</td><td><b>980</b></td></tr><tr><td>10KGS</td><td><b>490</b></td></tr></table>
+<h3 class="feed-title">🐖 SOW & WEANER</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,200</b></td></tr><tr><td>20KGS</td><td><b>660</b></td></tr><tr><td>10KGS</td><td><b>330</b></td></tr></table>
+<h3 class="feed-title">🐖 PIG FINISHER</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,200</b></td></tr><tr><td>20KGS</td><td><b>660</b></td></tr><tr><td>10KGS</td><td><b>330</b></td></tr></table>
+<h3 class="feed-title">🌾 BRAN MIX</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>40KGS</td><td><b>1,400</b></td></tr></table>
+<h3 class="feed-title">🌽 MAIZE GERM</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>50KGS</td><td><b>2,000</b></td></tr></table>
+<h3 class="feed-title">🐥 CHICK MASH</h3>
+<table><tr><th>Size</th><th>Price (Ksh)</th></tr><tr><td>70KGS</td><td><b>2,150</b></td></tr><tr><td>20KGS</td><td><b>880</b></td></tr><tr><td>10KGS</td><td><b>440</b></td></tr><tr><td>5KGS</td><td><b>220</b></td></tr></table>
 <div class="btns"><a class="btn green" href="https://wa.me/254720220892?text=Hello%20Novena%2C%20I%20want%20Animal%20Feeds%20prices">ORDER ANIMAL FEEDS</a></div>
 </div>
+
+<!-- GALLERY -->
 <div id="gallery" class="page">
 <h2>GALLERY</h2><p>Real photos from Maua.</p>
 <div class="gallery">
 <img src="rosa-team.jpg"><img src="rosa-5kg.jpg"><img src="rosa-stock.jpg"><img src="delivery.jpg"><img src="loading.jpg"><img src="maua-mill.jpg"><img src="feeds-poster.jpg">
 </div>
 </div>
+
+<!-- LOCATION -->
 <div id="location" class="page">
 <h2>📍 FIND US - LOCATION</h2><br>
 <div class="location-box">
@@ -128,6 +174,8 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 <a class="btn yellow" href="tel:+254793308004">CALL FOR DIRECTIONS - 0793 308 004</a>
 </div>
 </div>
+
+<!-- CONTACT -->
 <div id="contact" class="page">
 <h2>CONTACT US</h2><br>
 <p><b>📍 Location:</b> Behind Shell Petrol Station, Iriene Area, Maua Town, Meru County<br><b>📞 Calls:</b> 0793 308 004<br><b>💬 WhatsApp:</b> 0720 220 892<br><b>Email:</b> <a href="mailto:cymumu7@gmail.com">cymumu7@gmail.com</a></p>
@@ -139,114 +187,112 @@ button{width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-rad
 <button type="submit">SEND ON WHATSAPP</button>
 </form>
 </div>
+
 <footer>© 2026 NOVENA MAIZE MILLERS • 📍 Behind Shell Petrol Station, Iriene Area, Maua Town • Calls 0793 308 004 • WhatsApp 0720 220 892</footer><br><a onclick="show('staff')" style="color:#999; font-size:11px;">Staff</a>
+
 <script>
 function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function sendWA(e){e.preventDefault();var n=document.getElementById('name').value;var m=document.getElementById('msg').value;window.open('https://wa.me/254720220892?text='+encodeURIComponent('Hello Novena, I am '+n+'. '+m));}
-
-function chgQ(id,d){var e=document.getElementById('q-'+id);if(!e)return;var v=parseInt(e.value||1)+d;if(v<1)v=1;e.value=v;}
-function ordQ(name,price,id){var e=document.getElementById('q-'+id);var q=e?parseInt(e.value||1):1;var tot=q*price;var msg='Habari Novena! Nataka ku-order: '+name+' x '+q+' = KSh '+tot+'. Tafadhali ni-confirm.';window.open('https://wa.me/254793308004?text='+encodeURIComponent(msg),'_blank');}
 </script>
-<div id="admin" class="page">
-<div style="background:#fff;border:2px solid #228b22;border-radius:14px;padding:22px;max-width:600px;margin:15px auto">
+<!-- ADMIN - NOVENA -->
+<section id="admin" style="display:none;padding:30px 15px;max-width:600px;margin:auto">
+<h2>Admin Login</h2>
 <div id="adminLoginBox">
-<h2 style="color:#228b22">🔐 Admin Login</h2>
-<p>Admin Only.</p>
-<input id="adminPass" type="password" placeholder="Password" style="width:100%;padding:12px;margin:8px 0">
-<button onclick="adminLogin()" style="width:100%;padding:14px;background:#000;color:#fff;border:0;border-radius:8px">LOGIN</button>
+<input id="adminPass" type="password" placeholder="Password" style="width:100%;padding:12px">
+<button onclick="adminLogin()" style="width:100%;padding:12px;background:#000;color:#fff;border:0;margin-top:8px">LOGIN</button>
+<p style="font-size:13px">Password: novena2026</p>
 </div>
+
 <div id="adminDash" style="display:none">
 <h2>Welcome Admin 👑</h2>
-<p>Novena Maize Millers • Maua • Bei LIVE kutoka NPoint</p>
-<div style="background:#fff3cd;border:2px solid #ffeb3b;border-radius:10px;padding:14px;margin:14px 0">
-<h3>✏️ CHANGE PRICES HERE</h3>
-<p style="font-size:13px">1. Badilisha bei hapa chini<br>2. Bonyeza COPY BEI MPYA<br>3. Nenda npoint.io > bin 73745e09e2d0a79d888d > paste > Save</p>
-<div id="adminEditList" style="max-height:280px;overflow:auto;margin-top:10px"></div>
-<button onclick="copyNewPrices()" style="width:100%;padding:14px;background:#228b22;color:#fff;border:0;border-radius:8px;margin-top:10px">📋 COPY BEI MPYA - WEKA NPOINT</button>
-<p id="copyMsg" style="font-size:13px;color:green;text-align:center"></p>
-  
-<div id="adminLivePrices" style="font-size:14px;background:#f9f9f9;border-radius:10px;padding:12px;max-height:200px;overflow:auto">Inapakia...</div>
-<a href="https://www.npoint.io" target="_blank" style="display:block;text-align:center;background:#000;color:#fff;padding:14px;border-radius:10px;text-decoration:none;font-weight:bold;margin:8px 0">🔗 FUNGUA NPOINT.IO</a>
-<button onclick="adminLogout()" style="width:100%;padding:12px;background:#e74c3c;color:#fff;border:0;border-radius:8px">LOGOUT</button>
+<p>Badilisha Bei Hapa:</p>
+
+<label>Broiler 1kg - KSh</label>
+<input id="a-broiler" type="number" placeholder="450" style="width:100%;padding:10px;margin:5px 0">
+<label>Kienyeji 1kg - KSh</label>
+<input id="a-kienyeji" type="number" placeholder="750" style="width:100%;padding:10px;margin:5px 0">
+<label>Layers 1kg - KSh</label>
+<input id="a-layers" type="number" placeholder="400" style="width:100%;padding:10px;margin:5px 0">
+<label>Chicks Day Old - KSh</label>
+<input id="a-chicks" type="number" placeholder="120" style="width:100%;padding:10px;margin:5px 0">
+<label>Eggs Tray - KSh</label>
+<input id="a-eggs" type="number" placeholder="550" style="width:100%;padding:10px;margin:5px 0">
+<label>Feed Broiler Starter 50kg - KSh</label>
+<input id="a-feed1" type="number" placeholder="4200" style="width:100%;padding:10px;margin:5px 0">
+<label>Feed Layers Mash 50kg - KSh</label>
+<input id="a-feed2" type="number" placeholder="3800" style="width:100%;padding:10px;margin:5px 0">
+
+<button onclick="saveAdmin()" style="width:100%;padding:14px;background:green;color:#fff;border:0;margin-top:10px;font-weight:bold">💾 SAVE PRICES</button>
+<button onclick="adminLogout()" style="width:100%;padding:12px;background:red;color:#fff;border:0;margin-top:8px">LOGOUT</button>
 <button onclick="show('home')" style="width:100%;padding:12px;margin-top:8px">BACK TO HOME</button>
+<p id="adminMsg" style="text-align:center;color:green"></p>
 </div>
-</div>
-</div>
+</section>
 <script>
-let SERVER_PASS = "novena2026";
-fetch(NPOINT_URL).then(r=>r.json()).then(d=>{ if(d.adminPass) SERVER_PASS = d.adminPass; });
-function getAdminPass(){ return SERVER_PASS; }
-function adminLogin(){ if(document.getElementById("adminPass").value === getAdminPass()){
-function buildAdminEditor(products){
-  var box=document.getElementById("adminEditList"); if(!box) return;
-  box.innerHTML=products.map(function(p,i){ return '<div style="display:flex;gap:8px;align-items:center;margin:6px 0"><span style="flex:1;font-size:13px">'+p.name+' - '+p.size+'</span><input id="edit-price-'+i+'" type="number" value="'+p.price+'" style="width:110px;margin:0;padding:8px"></div>'; }).join("");
-  window._currentProducts=products;
+function adminLogin(){
+  if(document.getElementById('adminPass').value==='novena2026'){
+    document.getElementById('adminLoginBox').style.display='none';
+    document.getElementById('adminDash').style.display='block';
+  } else { alert('Wrong Password!'); }
 }
-function copyNewPrices(){
-  var updated=window._currentProducts.map(function(p,i){ return {name:p.name,size:p.size,price:Number(document.getElementById("edit-price-"+i).value)}; });
-  navigator.clipboard.writeText(JSON.stringify({products:updated},null,2)).then(function(){ document.getElementById("copyMsg").innerText="✅ Imecopywa! Sasa fungua NPoint, paste, Save."; });
+function adminLogout(){
+  document.getElementById('adminDash').style.display='none';
+  document.getElementById('adminLoginBox').style.display='block';
+  document.getElementById('adminPass').value='';
+  show('home');
+  alert('Logged out! Bye Admin');
 }
-function adminLogout(){document.getElementById('adminDash').style.display='none';document.getElementById('adminLoginBox').style.display='block';document.getElementById('adminPass').value='';show('home');alert('Logged out! Bye Admin');}
-function saveAdmin(){document.getElementById('adminMsg').innerText='✅ Saved! Bei mpya zimehifadhiwa.';}
+function saveAdmin(){
+  document.getElementById('adminMsg').innerText='✅ Saved! Bei mpya zimehifadhiwa.';
+}
 </script>
+
+
+
 <section style="padding:30px 15px;text-align:center">
 <h2 style="font-size:24px;margin-bottom:10px">What Our Customers Say</h2>
 <p style="color:#666;margin-bottom:20px">Umeshawahi kununua unga kwetu? Tuambie ulivyojisikia</p>
 <a href="https://wa.me/254720220892?text=Hi!%20Nataka%20kuandika%20review%20ya%20maua%20niliyonunua" style="background:#25D366;color:#fff;padding:12px 25px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block">✍️ Write a Review on WhatsApp</a>
 <p style="color:#888;font-size:13px;margin-top:15px">Reviews zako zitaonekana hapa baada ya kuzithibitisha</p>
 </section>
-<script>
-const NPOINT_URL = "https://api.npoint.io/73745e09e2d0a79d888d";
-const FALLBACK = [
-{name:"ROSA",size:"1KG",price:1660},{name:"ROSA",size:"1/2KG",price:845},{name:"ROSA",size:"5KG",price:325},{name:"ROSA",size:"10KG",price:650},{name:"ROSA",size:"20KG",price:1260},{name:"ROSA",size:"22.5KG",price:1410},{name:"ROSA",size:"45KG",price:2820},
-{name:"KIENYEJI",size:"70KGS",price:2400},{name:"KIENYEJI",size:"20KGS",price:720},{name:"KIENYEJI",size:"10KGS",price:360},{name:"KIENYEJI",size:"5KGS",price:180},
-{name:"GROWERS MASH",size:"70KGS",price:2900},{name:"GROWERS MASH",size:"20KGS",price:980},{name:"GROWERS MASH",size:"10KGS",price:490},{name:"GROWERS MASH",size:"5KGS",price:270},
-{name:"LAYERS MASH",size:"70KGS",price:2900},{name:"LAYERS MASH",size:"20KGS",price:980},{name:"LAYERS MASH",size:"10KGS",price:490},{name:"LAYERS MASH",size:"5KGS",price:270},
-{name:"DAIRY MEAL",size:"70KGS",price:3000},{name:"DAIRY MEAL",size:"20KGS",price:980},{name:"DAIRY MEAL",size:"10KGS",price:490},
-{name:"SOW & WEANER",size:"70KGS",price:2200},{name:"SOW & WEANER",size:"20KGS",price:660},{name:"SOW & WEANER",size:"10KGS",price:330},
-{name:"PIG FINISHER",size:"70KGS",price:2200},{name:"PIG FINISHER",size:"20KGS",price:660},{name:"PIG FINISHER",size:"10KGS",price:330},
-{name:"BRAN MIX",size:"40KGS",price:1400},{name:"MAIZE GERM",size:"50KGS",price:2000},
-{name:"CHICK MASH",size:"70KGS",price:2150},{name:"CHICK MASH",size:"20KGS",price:880},{name:"CHICK MASH",size:"10KGS",price:440},{name:"CHICK MASH",size:"5KGS",price:220}
-];
-const ICONS = {"KIENYEJI":"🐔","GROWERS MASH":"🐔","LAYERS MASH":"🥚","DAIRY MEAL":"🐄","SOW & WEANER":"🐖","PIG FINISHER":"🐖","BRAN MIX":"🌾","MAIZE GERM":"🌽","CHICK MASH":"🐥"};
-function money(n){return Number(n).toLocaleString();}
-function renderFromProducts(products){
-  var rosa = products.filter(p=>p.name==="ROSA");
-document.getElementById("rosaProducts").innerHTML = rosa.map((p,i)=>`<div class="card" style="padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:10px;text-align:center;"><b>${p.name||p.size}</b><br><span>KSh ${p.price}</span><br><br><button onclick="chgQ('r'+${i},-1)" style="padding:6px 12px;">-</button> <input id="q-r${i}" value="1" type="number" style="width:50px;text-align:center;padding:6px;font-weight:bold;"> <button onclick="chgQ('r'+${i},1)" style="padding:6px 12px;">+</button><br><button onclick="ordQ('${p.size}',${p.price},'r'+${i})" style="background:green;color:white;padding:8px 14px;border:none;border-radius:6px;margin-top:8px;">ORDER</button></div>`).join("");
-  var groups = {};
-  products.filter(p=>p.name!=="ROSA").forEach(p=>{ if(!groups[p.name]) groups[p.name]=[]; groups[p.name].push(p); });
-  var html = "";
-  Object.keys(groups).forEach(function(name){
-    html += '<h3 class="feed-title">'+(ICONS[name]||"🐔")+' '+name+'</h3><table><tr><th>Size</th><th>Price (Ksh)</th><th></th></tr>';
-    groups[name].forEach(function(p, idx){
-     html += '<tr><td>'+p.size+'</td><td><b>'+money(p.price)+'</b></td><td style="text-align:center;"><button onclick="chgQ(\'f\'+name+idx,-1)" style="padding:4px 8px;">-</button><input id="q-f'+name+idx+'" value="1" type="number" style="width:40px;text-align:center;padding:4px;"><button onclick="chgQ(\'f\'+name+idx,1)" style="padding:4px 8px;">+</button></td><td><button onclick="ordQ(\''+name+' - '+p.size+'\','+p.price+',\'f\'+name+idx)" style="background:green;color:white;padding:6px 10px;border:none;border-radius:5px;">ORDER</button></td></tr>';
-  document.getElementById("feedsList").innerHTML = html;
-  buildAdminEditor(products);
-  bindOrders();
-}
-function bindOrders(){
-  document.querySelectorAll("#rosaProducts .order, #feedsList .order").forEach(function(btn){
-    btn.addEventListener("click", function(e){
-      var txt = btn.getAttribute("href");
-    });
-  });
-}
-fetch(NPOINT_URL).then(r=>r.json()).then(d=>{ if(d.products) renderFromProducts(d.products); else renderFromProducts(FALLBACK); }).catch(()=>renderFromProducts(FALLBACK));
-function chgQ(id,n){let el=document.getElementById("q-"+id);el.value=Math.max(1,parseInt(el.value||1)+n);}
-function ordQ(name,price,id){let qty=document.getElementById("q-"+id).value||1;let total=qty*price;let msg="Hello Novena! Nataka ku-order: "+name+" x "+qty+" Mifuko = KSh "+total;window.open("https://wa.me/254720208827?text="+encodeURIComponent(msg),"_blank");}
-</script>
-<script>
+  <script>
 function sendOrderToSheet(productName, productPrice){
-  var name = prompt("Jina lako"); if(!name) return;
-  var phone = prompt("Namba ya simu"); if(!phone) return;
-  var location = prompt("Location / Diani, Ukunda, Tiwi"); if(!location) location = "";
+  var name = prompt("Jina lako");
+  if(!name) return;
+  var phone = prompt("Namba ya simu");
+  if(!phone) return;
+  var location = prompt("Location / Diani, Ukunda, Tiwi");
+  if(!location) location = "";
   var msg = "Habari! Nataka ku-order. Product: " + productName + " Price: " + productPrice + " Jina: " + name + " Simu: " + phone + " Location: " + location;
   var url = "https://wa.me/254720220892?text=" + encodeURIComponent(msg);
-  var a = document.createElement("a"); a.href = url; a.target = "_blank"; document.body.appendChild(a); a.click(); a.remove();
-  fetch("https://script.google.com/macros/s/AKfycbzPbVN4BVEcTXHBzywLGe9NcDFhG81FE7dTOvyFhltgqJUQbgD2eRDl7XOID9JavEpJMw/exec", {method: "POST",mode: "no-cors",headers: {"Content-Type": "application/json"},body: JSON.stringify({action: "saveOrder",date: new Date().toLocaleString(),customer: name + " - " + phone + " - " + location,product: productName,qty: 1,total: productPrice,status: "Pending"})});
+  var a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  fetch("https://script.google.com/macros/s/AKfycbzPbVN4BVEcTXHBzywLGe9NcDFhG81FE7dTOvyFhltgqJUQbgD2eRDl7XOID9JavEpJMw/exec", {
+  method: "POST",
+  mode: "no-cors",
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify({
+    action: "saveOrder",
+    date: new Date().toLocaleString(),
+    customer: name + " - " + phone + " - " + location,
+    product: productName,
+    qty: 1,
+    total: productPrice,
+    status: "Pending"
+  })
+});
+
+ //var msg = "Habari Rosacorn! Nataka ku-order%0A%0AProduct: " + productName + "%0APrice: " + productPrice + "%0AJina: " + name + "%0ASimu: " + phone + "%0ALocation: " + location;
+//window.open("https://wa.me/254720220892?text=" + msg, "_blank");
+//alert("Asante " + name + "! Order yako imetumwa. Tafadhali tuma ujumbe WhatsApp.");
 }
 </script>
-<script>
+  <script>
 document.addEventListener("DOMContentLoaded", function(){
   document.querySelectorAll(".order").forEach(function(btn){
     btn.addEventListener("click", function(e){
@@ -256,15 +302,26 @@ document.addEventListener("DOMContentLoaded", function(){
       var price = card ? card.querySelector("p").innerText : "";
       sendOrderToSheet(name, price);
       var orders = JSON.parse(localStorage.getItem('myOrders')||'[]');
-      orders.push({name: name, price: price, date: new Date().toLocaleString()});
-      localStorage.setItem('myOrders', JSON.stringify(orders));
+orders.push({name: name, price: price, date: new Date().toLocaleString()});
+localStorage.setItem('myOrders', JSON.stringify(orders));
     });
   });
 });
-function showMyOrders(){let orders=JSON.parse(localStorage.getItem('myOrders')||'[]');if(orders.length===0){alert("Huna order bado. Order kitu uone hapa!");return;}let text="📦 ORDERS ZAKO:\n\n";orders.forEach((o,i)=>{text+=(i+1)+". "+(o.name||o.product)+" - "+o.price+" - "+o.date+"\n";});alert(text);}
-function clearMyOrders(){if(confirm('Una uhakika unataka kufuta orders zako zote?')){localStorage.removeItem('myOrders');alert('Orders zimefutwa!');}}
-</script>
-<button onclick="showMyOrders()" style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:12px 18px;border:none;border-radius:30px;cursor:pointer;z-index:9999;font-weight:bold;">📦 My Orders</button>
-<button onclick="clearMyOrders()" style="position:fixed; bottom:70px; right:20px; background:#e74c3c; color:white; border:none; padding:10px 15px; border-radius:20px; z-index:9999;">🗑️ Clear Orders</button>
+function showMyOrders() {
+  let orders = JSON.parse(localStorage.getItem('myOrders') || '[]');
+  if (orders.length === 0) { alert("Huna order bado. Order kitu uone hapa!"); return; }
+  let text = "📦 ORDERS ZAKO:\n\n";
+  orders.forEach((o, i) => { text += (i+1) + ". " + (o.name || o.product) + " - " + o.price + " - " + o.date + "\n"; });
+  alert(text);
+}
+ function clearMyOrders() {
+  if(confirm('Una uhakika unataka kufuta orders zako zote?')) {
+    localStorage.removeItem('myOrders');
+    alert('Orders zimefutwa!');
+  }
+} 
+  </script>
+<button onclick="showMyOrders()"style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:12px 18px;border:none;border-radius:30px;cursor:pointer;z-index:9999;font-weight:bold;">📦 My Orders</button>
+  <button onclick="clearMyOrders()" style="position:fixed; bottom:70px; right:20px; background:#e74c3c; color:white; border:none; padding:10px 15px; border-radius:20px; z-index:9999;">🗑️ Clear Orders</button>
 </body>
 </html>
