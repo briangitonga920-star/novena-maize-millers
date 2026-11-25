@@ -209,17 +209,14 @@ const ICONS = {"KIENYEJI":"🐔","GROWERS MASH":"🐔","LAYERS MASH":"🥚","DAI
 function money(n){return Number(n).toLocaleString();}
 function renderFromProducts(products){
   var rosa = products.filter(p=>p.name==="ROSA");
-  document.getElementById("rosaProducts").innerHTML = rosa.map(p=>'<div class="product"><b>Rosa - '+p.size+'</b><p>KES '+money(p.price)+'</p><a class="order" href="https://wa.me/254720220892?text='+encodeURIComponent('Hello Novena, I want Rosa '+p.size+' - KES '+p.price)+'">Order on WhatsApp</a></div>').join("");
+document.getElementById("rosaProducts").innerHTML = rosa.map((p,i)=>`<div class="card" style="padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:10px;text-align:center;"><b>${p.name||p.size}</b><br><span>KSh ${p.price}</span><br><br><button onclick="chgQ('r'+${i},-1)" style="padding:6px 12px;">-</button> <input id="q-r${i}" value="1" type="number" style="width:50px;text-align:center;padding:6px;font-weight:bold;"> <button onclick="chgQ('r'+${i},1)" style="padding:6px 12px;">+</button><br><button onclick="ordQ('${p.size}',${p.price},'r'+${i})" style="background:green;color:white;padding:8px 14px;border:none;border-radius:6px;margin-top:8px;">ORDER</button></div>`).join("");
   var groups = {};
   products.filter(p=>p.name!=="ROSA").forEach(p=>{ if(!groups[p.name]) groups[p.name]=[]; groups[p.name].push(p); });
   var html = "";
   Object.keys(groups).forEach(function(name){
     html += '<h3 class="feed-title">'+(ICONS[name]||"🐔")+' '+name+'</h3><table><tr><th>Size</th><th>Price (Ksh)</th><th></th></tr>';
-    groups[name].forEach(function(p){
-      html += '<tr><td>'+p.size+'</td><td><b>'+money(p.price)+'</b></td><td><a class="order" href="https://wa.me/254720220892?text='+encodeURIComponent('Hello Novena, I want '+name+' '+p.size+' - KES '+p.price)+'">Order</a></td></tr>';
-    });
-    html += '</table>';
-  });
+    groups[name].forEach(function(p, idx){
+     html += '<tr><td>'+p.size+'</td><td><b>'+money(p.price)+'</b></td><td style="text-align:center;"><button onclick="chgQ(\'f\'+name+idx,-1)" style="padding:4px 8px;">-</button><input id="q-f'+name+idx+'" value="1" type="number" style="width:40px;text-align:center;padding:4px;"><button onclick="chgQ(\'f\'+name+idx,1)" style="padding:4px 8px;">+</button></td><td><button onclick="ordQ(\''+name+' - '+p.size+'\','+p.price+',\'f\'+name+idx)" style="background:green;color:white;padding:6px 10px;border:none;border-radius:5px;">ORDER</button></td></tr>';
   document.getElementById("feedsList").innerHTML = html;
   buildAdminEditor(products);
   bindOrders();
@@ -232,6 +229,8 @@ function bindOrders(){
   });
 }
 fetch(NPOINT_URL).then(r=>r.json()).then(d=>{ if(d.products) renderFromProducts(d.products); else renderFromProducts(FALLBACK); }).catch(()=>renderFromProducts(FALLBACK));
+function chgQ(id,n){let el=document.getElementById("q-"+id);el.value=Math.max(1,parseInt(el.value||1)+n);}
+function ordQ(name,price,id){let qty=document.getElementById("q-"+id).value||1;let total=qty*price;let msg="Hello Novena! Nataka ku-order: "+name+" x "+qty+" Mifuko = KSh "+total;window.open("https://wa.me/254720208827?text="+encodeURIComponent(msg),"_blank");}
 </script>
 <script>
 function sendOrderToSheet(productName, productPrice){
