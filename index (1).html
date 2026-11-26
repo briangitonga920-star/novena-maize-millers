@@ -285,7 +285,7 @@ footer h4{font:600 11px Inter,Arial,sans-serif;letter-spacing:.2em;text-transfor
 <div id="adminLoginBox">
 <input id="adminPass" type="password" placeholder="Password">
 <button onclick="adminLogin()">LOGIN</button>
-<p style="font-size:13px;margin-top:8px">Password: novena2026</p>
+
 </div>
 <div id="adminDash" style="display:none">
 <h2>Welcome Admin 👑</h2>
@@ -320,14 +320,19 @@ footer h4{font:600 11px Inter,Arial,sans-serif;letter-spacing:.2em;text-transfor
 <div><h4>Company</h4><a onclick="show('home')">Home</a><a onclick="show('about')">About</a><a onclick="show('gallery')">Gallery</a><a onclick="show('location')">Location</a><a onclick="show('contact')">Contact</a></div>
 <div><h4>Reach Us</h4><p style="font-size:14px">Calls: 0793 308 004<br>WhatsApp: 0720 220 892<br>cymumu7@gmail.com</p></div>
 </div>
-<div class="copy"><span>© 2026 NOVENA MAIZE MILLERS</span><a onclick="show('staff')">Staff</a></div>
+<div class="copy"><span>© 2026 NOVENA MAIZE MILLERS</span><a onclick="showAdmin()">Staff</a>
 </footer>
 
 <button class="fab" onclick="showMyOrders()" style="bottom:20px;background:var(--ink)">📦 My Orders</button>
 <button class="fab" onclick="clearMyOrders()" style="bottom:70px;background:#8a2a2a">🗑️ Clear Orders</button>
 
 <script>
-function show(id){var el=document.getElementById(id);if(!el)return;document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));el.classList.add('active');window.scrollTo(0,0);}
+  function showAdmin(){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('admin').style.display='block';
+  window.scrollTo(0,0);
+}
+function show(id){var el=document.getElementById(id);if(!el)return;document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('admin').style.display='none';el.classList.add('active');window.scrollTo(0,0);}
 function sendWA(e){e.preventDefault();var n=document.getElementById('name').value;var m=document.getElementById('msg').value;window.open('https://wa.me/254720220892?text='+encodeURIComponent('Hello Novena, I am '+n+'. '+m));}
 function adminLogin(){
   if(document.getElementById('adminPass').value==='novena2026'){
