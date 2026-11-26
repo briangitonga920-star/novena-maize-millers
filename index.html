@@ -424,53 +424,56 @@ document.querySelectorAll('a, button').forEach(btn => {
   update();
 });
 <script>
-// + NA - MPYA - CLEAR KABISA
-document.querySelectorAll('button').forEach(btn => {
-  if (!btn.textContent.includes('Order on WhatsApp')) return;
-  if (btn.dataset.done) return;
-  btn.dataset.done = '1';
+window.addEventListener('load', function(){
+  document.querySelectorAll('button').forEach(btn => {
+    if (btn.dataset.done) return;
+    // Chukua button zote zenye orderNow au WhatsApp
+    let html = btn.outerHTML + btn.textContent;
+    if (!html.includes('orderNow') && !btn.textContent.toLowerCase().includes('order') && !btn.textContent.toLowerCase().includes('whatsapp')) return;
+    if (btn.textContent.trim() === '+' || btn.textContent.trim() === '−' || btn.textContent.trim() === '-') return;
+    btn.dataset.done = '1';
 
-  let qty = 1;
-  let card = btn.parentElement;
-  let m = card.textContent.match(/KES\s*([\d,]+)/);
-  let price = m ? parseInt(m[1].replace(/,/g,'')) : 0;
+    let qty = 1;
+    let card = btn.parentElement;
+    let m = card.textContent.match(/KES\s*([\d,]+)/);
+    let price = m ? parseInt(m[1].replace(/,/g,'')) : 0;
 
-  let wrap = document.createElement('div');
-  wrap.style.cssText = 'display:flex;align-items:center;gap:10px;justify-content:center;margin:10px 0;';
+    let wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;align-items:center;gap:10px;justify-content:center;margin:10px 0;';
 
-  let minus = document.createElement('button');
-  minus.type = 'button';
-  minus.textContent = '−';
-  minus.style.cssText = 'width:50px;height:50px;background:#000;color:#fff;font-size:30px;font-weight:900;border:none;border-radius:12px;';
+    let minus = document.createElement('button');
+    minus.type = 'button';
+    minus.textContent = '-';
+    minus.style.cssText = 'width:50px!important;height:50px!important;background:#000!important;color:#fff!important;font-size:30px!important;font-weight:900!important;border:none!important;border-radius:12px!important;display:flex!important;align-items:center!important;justify-content:center!important;';
 
-  let num = document.createElement('span');
-  num.textContent = '1';
-  num.style.cssText = 'font-size:22px;font-weight:900;min-width:30px;text-align:center;';
+    let num = document.createElement('span');
+    num.textContent = '1';
+    num.style.cssText = 'font-size:22px!important;font-weight:900!important;min-width:30px!important;text-align:center!important;color:#000!important;';
 
-  let plus = document.createElement('button');
-  plus.type = 'button';
-  plus.textContent = '+';
-  plus.style.cssText = 'width:50px;height:50px;background:#000;color:#fff;font-size:30px;font-weight:900;border:none;border-radius:12px;';
+    let plus = document.createElement('button');
+    plus.type = 'button';
+    plus.textContent = '+';
+    plus.style.cssText = 'width:50px!important;height:50px!important;background:#000!important;color:#fff!important;font-size:30px!important;font-weight:900!important;border:none!important;border-radius:12px!important;display:flex!important;align-items:center!important;justify-content:center!important;';
 
-  let total = document.createElement('div');
-  total.textContent = 'Total: KES ' + price.toLocaleString();
-  total.style.cssText = 'font-size:15px;font-weight:bold;text-align:center;margin-bottom:8px;';
+    let total = document.createElement('div');
+    total.textContent = 'Total: KES ' + price.toLocaleString();
+    total.style.cssText = 'font-size:15px!important;font-weight:bold!important;text-align:center!important;margin-bottom:8px!important;';
 
-  wrap.appendChild(minus);
-  wrap.appendChild(num);
-  wrap.appendChild(plus);
+    wrap.appendChild(minus);
+    wrap.appendChild(num);
+    wrap.appendChild(plus);
 
-  btn.parentNode.insertBefore(wrap, btn);
-  btn.parentNode.insertBefore(total, btn);
+    btn.parentNode.insertBefore(wrap, btn);
+    btn.parentNode.insertBefore(total, btn);
 
-  function upd(){
-    num.textContent = qty;
-    total.textContent = 'Total: KES ' + (price*qty).toLocaleString();
-    btn.dataset.qty = qty;
-  }
-  minus.onclick = (e)=>{ e.preventDefault(); e.stopPropagation(); if(qty>1) qty--; upd(); };
-  plus.onclick = (e)=>{ e.preventDefault(); e.stopPropagation(); qty++; upd(); };
-  upd();
+    function upd(){
+      num.textContent = qty;
+      total.textContent = 'Total: KES ' + (price*qty).toLocaleString();
+    }
+    minus.onclick = (e)=>{ e.preventDefault(); e.stopPropagation(); if(qty>1) qty--; upd(); };
+    plus.onclick = (e)=>{ e.preventDefault(); e.stopPropagation(); qty++; upd(); };
+    upd();
+  });
 });
 </script>
 </body>
