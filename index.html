@@ -393,7 +393,7 @@ document.querySelectorAll('a, button').forEach(btn => {
   let unitPrice = priceText ? parseInt(priceText[1].replace(/,/g,'')) : 0;
   let wrap = document.createElement('div');
   wrap.style.cssText = 'display:flex;align-items:center;gap:8px;justify-content:center;margin:8px 0;flex-wrap:wrap;';
-  wrap.innerHTML = '<button type="button" style="width:32px;height:32px;border-radius:50%;border:1px solid #ddd;background:#fff;font-size:18px;">-</button><span style="font-weight:bold;min-width:20px;text-align:center;">1</span><button type="button" style="width:32px;height:32px;border-radius:50%;border:1px solid #ddd;background:#fff;font-size:18px;">+</button><span style="font-size:13px;color:#666;">Total: KES '+unitPrice.toLocaleString()+'</span>';
+ wrap.innerHTML = '<button type="button" style="width:45px!important;height:45px!important;min-width:45px!important;background:#228b22!important;color:#fff!important;font-size:26px!important;font-weight:bold!important;border-radius:8px!important;">-</button><span style="font-weight:bold;min-width:25px;text-align:center;font-size:20px;">1</span><button type="button" style="width:45px!important;height:45px!important;min-width:45px!important;background:#228b22!important;color:#fff!important;font-size:26px!important;font-weight:bold!important;border-radius:8px!important;">+</button><span style="font-size:13px;color:#666;">Total: KES '+unitPrice.toLocaleString()+'</span>';
   btn.parentNode.insertBefore(wrap, btn);
   let minus = wrap.children[0];
   let qtySpan = wrap.children[1];
