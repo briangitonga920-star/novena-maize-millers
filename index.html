@@ -372,79 +372,52 @@ function showMyOrders() {
 <button onclick="showMyOrders()"style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:12px 18px;border:none;border-radius:30px;cursor:pointer;z-index:9999;font-weight:bold;">📦 My Orders</button>
   <button onclick="clearMyOrders()" style="position:fixed; bottom:70px; right:20px; background:#e74c3c; color:white; border:none; padding:10px 15px; border-radius:20px; z-index:9999;">🗑️ Clear Orders</button>
 <script>
-// QUANTITY KWA BIDHAA ZOTE - usiguse hapo juu
+function orderNow(name, price){
+  // Tafuta qty ya hii bidhaa
+  var btn = event.target;
+  var qty = btn.dataset.qty ? parseInt(btn.dataset.qty) : 1;
+  var total = price * qty;
+  var msg = "Hello Novena, nataka " + name + " x " + qty + " = KES " + total.toLocaleString();
+  window.open("https://wa.me/254728220082?text=" + encodeURIComponent(msg), "_blank");
+}
+</script>
+<script>
+// QUANTITY KWA BIDHAA ZOTE
 document.querySelectorAll('a, button').forEach(btn => {
   if (!btn.textContent.includes('Order on WhatsApp')) return;
   if (btn.dataset.qtyDone) return;
   btn.dataset.qtyDone = '1';
-
   let qty = 1;
-  // Tafuta bei na jina karibu na button
   let card = btn.closest('div');
   let priceText = card ? card.textContent.match(/KES\s*([\d,]+)/) : null;
   let unitPrice = priceText ? parseInt(priceText[1].replace(/,/g,'')) : 0;
-
-  // Tengeneza - 1 +
   let wrap = document.createElement('div');
-  wrap.style.cssText = 'display:flex;align-items:center;gap:8px;justify-content:center;margin:8px 0;';
-  wrap.innerHTML = `
-    <button type="button" style="width:32px;height:32px;border-radius:50%;border:1px solid #ddd;background:#fff;font-size:18px;">-</button>
-    <span style="font-weight:bold;min-width:20px;text-align:center;">1</span>
-    <button type="button" style="width:32px;height:32px;border-radius:50%;border:1px solid #ddd;background:#fff;font-size:18px;">+</button>
-    <span style="font-size:13px;color:#666;">Total: KES ${unitPrice.toLocaleString()}</span>
-  `;
+  wrap.style.cssText = 'display:flex;align-items:center;gap:8px;justify-content:center;margin:8px 0;flex-wrap:wrap;';
+  wrap.innerHTML = '<button type="button" style="width:32px;height:32px;border-radius:50%;border:1px solid #ddd;background:#fff;font-size:18px;">-</button><span style="font-weight:bold;min-width:20px;text-align:center;">1</span><button type="button" style="width:32px;height:32px;border-radius:50%;border:1px solid #ddd;background:#fff;font-size:18px;">+</button><span style="font-size:13px;color:#666;">Total: KES '+unitPrice.toLocaleString()+'</span>';
   btn.parentNode.insertBefore(wrap, btn);
-
   let minus = wrap.children[0];
   let qtySpan = wrap.children[1];
   let plus = wrap.children[2];
   let totalSpan = wrap.children[3];
-
   let origHref = btn.href || '';
-  let origText = btn.textContent;
-
   function update() {
     qtySpan.textContent = qty;
     totalSpan.textContent = 'Total: KES ' + (unitPrice * qty).toLocaleString();
-    // Badilisha WhatsApp link iwe na idadi
-    if (origHref.includes('text=')) {
-      let base = origHref.split('text=')[0] + 'text=';
-      let msg = `Nataka ${origText} x ${qty} = KES ${(unitPrice * qty).toLocaleString()}`;
-      // Chukua jina la bidhaa kama lipo
-      let nameEl = card ? card.querySelector('h3,h4,b') : null;
-      if (nameEl) msg = `Nataka ${nameEl.textContent.trim()} x ${qty} = KES ${(unitPrice * qty).toLocaleString()}`;
-      btn.href = base + encodeURIComponent(msg);
-    }
-    // Kama ni button yenye onclick, hifadhi qty kwenye button
     btn.dataset.qty = qty;
+    if (btn.tagName === 'A') {
+      let nameEl = card ? card.querySelector('b') : null;
+      let name = nameEl ? nameEl.textContent.trim() : 'Product';
+      let msg = 'Hello Novena, nataka ' + name + ' x ' + qty + ' = KES ' + (unitPrice * qty).toLocaleString();
+      btn.href = 'https://wa.me/254728220082?text=' + encodeURIComponent(msg);
+    }
   }
-
   minus.onclick = (e) => { e.preventDefault(); if(qty > 1) qty--; update(); };
   plus.onclick = (e) => { e.preventDefault(); qty++; update(); };
   update();
 });
-<script>
-function addQty(){
-  document.querySelectorAll('button').forEach(b=>{
-    if(b.textContent.includes('Order') && !b.dataset.done){
-      b.dataset.done=1;
-      let priceText = b.parentElement.textContent.match(/KES\s*([\d,]+)/);
-      let price = priceText ? parseInt(priceText[1].replace(/,/g,'')) : 0;
-      let box = document.createElement('div');
-      box.style.margin='8px 0';
-      box.innerHTML = '<button style="width:40px;height:40px;font-size:22px;">-</button> <span style="font-size:18px;font-weight:bold;padding:0 8px;">1</span> <button style="width:40px;height:40px;font-size:22px;">+</button><br><span>Total: KES '+price+'</span>';
-      let minus = box.querySelectorAll('button')[0];
-      let plus = box.querySelectorAll('button')[1];
-      let qtySpan = box.querySelectorAll('span')[0];
-      let totalSpan = box.querySelectorAll('span')[1];
-      minus.onclick = ()=>{ let q=Math.max(1,parseInt(qtySpan.innerText)-1); qtySpan.innerText=q; totalSpan.innerText='Total: KES '+(q*price); };
-      plus.onclick = ()=>{ let q=parseInt(qtySpan.innerText)+1; qtySpan.innerText=q; totalSpan.innerText='Total: KES '+(q*price); };
-      b.before(box);
-    }
-  });
-}
-setInterval(addQty, 500);
-addQty();
+</script>
+</body>
+</html>
 </script>
 </body>
 </html>
