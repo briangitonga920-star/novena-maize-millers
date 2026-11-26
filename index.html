@@ -304,14 +304,15 @@ function saveAdmin(){
 <p style="color:#888;font-size:13px;margin-top:15px">Reviews zako zitaonekana hapa baada ya kuzithibitisha</p>
 </section>
   <script>
-function sendOrderToSheet(productName, productPrice){
+function sendOrderToSheet(productName, productPrice, qty){
+  qty = qty || 1;
   var name = prompt("Jina lako");
   if(!name) return;
   var phone = prompt("Namba ya simu");
   if(!phone) return;
   var location = prompt("Location / Diani, Ukunda, Tiwi");
   if(!location) location = "";
-  var msg = "Habari! Nataka ku-order. Product: " + productName + " Price: " + productPrice + " Jina: " + name + " Simu: " + phone + " Location: " + location;
+ var msg = "Habari! Nataka ku-order. Product: " + productName + " x " + qty + " Price: " + productPrice + " Jina: " + name + " Simu: " + phone + " Location: " + location;
   var url = "https://wa.me/254720220892?text=" + encodeURIComponent(msg);
   var a = document.createElement("a");
   a.href = url;
@@ -329,7 +330,7 @@ function sendOrderToSheet(productName, productPrice){
     date: new Date().toLocaleString(),
     customer: name + " - " + phone + " - " + location,
     product: productName,
-    qty: 1,
+   qty: qty,
     total: productPrice,
     status: "Pending"
   })
@@ -348,7 +349,8 @@ document.addEventListener("DOMContentLoaded", function(){
       var card = btn.closest(".product");
       var name = card ? card.querySelector("b").innerText : "Product";
       var price = card ? card.querySelector("p").innerText : "";
-      sendOrderToSheet(name, price);
+     var qty = btn.dataset.qty ? parseInt(btn.dataset.qty) : 1;
+sendOrderToSheet(name, price, qty);
       var orders = JSON.parse(localStorage.getItem('myOrders')||'[]');
 orders.push({name: name, price: price, date: new Date().toLocaleString()});
 localStorage.setItem('myOrders', JSON.stringify(orders));
