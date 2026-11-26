@@ -352,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function(){
      var qty = btn.dataset.qty ? parseInt(btn.dataset.qty) : 1;
 sendOrderToSheet(name, price, qty);
       var orders = JSON.parse(localStorage.getItem('myOrders')||'[]');
-orders.push({name: name, price: price, date: new Date().toLocaleString()});
+orders.push({name: name + " x " + qty, price: price, date: new Date().toLocaleString()});
 localStorage.setItem('myOrders', JSON.stringify(orders));
     });
   });
