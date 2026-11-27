@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Novena Maize Millers | Rosacorn &amp; Animal Feeds - Maua</title>
-<meta name="description" content="Novena Maize Millers,Meru County. Grade 1 Rosacorn maize meal and 9 types of animal feed, milled fresh behind Shell Petrol Station, Iriene. Order on WhatsApp.">
+<meta name="description" content="Novena Maize Millers, Meru County. Grade 1 Rosacorn maize meal and 9 types of animal feed, milled fresh behind Shell Petrol Station, Iriene. Order on WhatsApp.">
 <meta property="og:title" content="Novena Maize Millers | Rosacorn &amp; Animal Feeds - Meru County">
 <meta property="og:description" content="Grade 1 maize meal and quality animal feeds, milled fresh in Meru County. Order on WhatsApp.">
 <meta property="og:type" content="website">
@@ -114,6 +114,29 @@ footer h4{font:600 11px Inter,Arial,sans-serif;letter-spacing:.2em;text-transfor
 .order-form{margin-top:60px;padding-top:40px;border-top:1px solid var(--line)}
 .order-form select,.order-form textarea{width:100%;padding:14px;margin:8px 0;border:1px solid #bdb9b0;background:#fff;font:inherit}
 .field-label{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:14px;font-weight:600}
+.slider{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--stone)}
+.slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}
+.slider img.active{opacity:1}
+.sl-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.85);color:var(--ink);font-size:26px;line-height:1;cursor:pointer}
+.sl-btn:hover{background:#fff;color:var(--accent)}
+.sl-btn.prev{left:12px}
+.sl-btn.next{right:12px}
+.sl-dots{position:absolute;top:14px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:2}
+.sl-dot{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.55);cursor:pointer}
+.sl-dot.active{background:#fff}
+.albums{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.album{display:block;background:#fff;border:1px solid var(--line);text-decoration:none;cursor:pointer;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.album:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.album img{width:100%;height:200px;object-fit:cover}
+.album-info{padding:16px 18px}
+.album-info b{display:block;font:500 22px/1.2 'Cormorant Garamond',Georgia,serif}
+.album-info span{font-size:13px;color:var(--muted)}
+.lb{position:fixed;inset:0;z-index:500;background:rgba(20,15,10,.85);display:flex;align-items:center;justify-content:center;padding:20px}
+.lb[hidden]{display:none}
+.lb-box{background:var(--paper);width:100%;max-width:1000px;max-height:90vh;overflow:auto;padding:24px;border-radius:12px}
+.lb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.lb-x{width:auto;padding:0 6px;background:none;color:var(--ink);font-size:30px;line-height:1;border:0;cursor:pointer}
+.lb-x:hover{background:none;color:var(--accent)}
 @media(max-width:900px){.hero,.split{grid-template-columns:1fr}.hero{padding:40px 24px}.badge{left:12px}.pillars,.trust .wrap{grid-template-columns:1fr}.trust .wrap div{border-left:0;border-top:1px solid #3a3a37}.trust .wrap div:first-child{border-top:0}.products,.feed-grid{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr 1fr}.sec{padding:60px 24px}}
 @media(max-width:560px){.products,.feed-grid{grid-template-columns:1fr}.foot{grid-template-columns:1fr}.loc{padding:28px}nav{gap:12px 16px}}
 </style>
@@ -142,14 +165,23 @@ footer h4{font:600 11px Inter,Arial,sans-serif;letter-spacing:.2em;text-transfor
 <div>
 <p class="eyebrow">ROSACORN • ANIMAL FEEDS</p>
 <h1>From Maua Mill,<br>Straight To You</h1>
-<p class="lead">Grade 1 maize meal and quality animal feeds, milled fresh in,Meru County.</p>
+<p class="lead">Grade 1 maize meal and quality animal feeds, milled fresh in Meru County.</p>
 <div class="btns">
 <a class="btn wa" href="https://wa.me/254720220892?text=Hello%20Novena%2C%20I%20want%20to%20order">ORDER ON WHATSAPP</a>
 <a class="btn" href="tel:+254793308004">CALL NOW - 0793 308 004</a>
 </div>
 </div>
 <div class="hero-img">
-<img src="rosa-team.jpg" alt="The Novena Maize Millers team in Maua">
+<div class="slider" id="heroSlider">
+<img src="rosa-team.jpg" alt="The Novena Maize Millers team" class="active">
+<img src="rosa-5kg.jpg" alt="Rosa maize meal 5kg">
+<img src="rosa-stock.jpg" alt="Rosa maize meal stock">
+<img src="delivery.jpg" alt="Novena delivery">
+<img src="loading.jpg" alt="Loading Novena feeds">
+<div class="sl-dots" id="slDots"></div>
+<button type="button" class="sl-btn prev" aria-label="Previous photo">‹</button>
+<button type="button" class="sl-btn next" aria-label="Next photo">›</button>
+</div>
 <div class="badge"><b>Milled fresh in Maua</b><span>Behind Shell Petrol Station, Iriene</span></div>
 </div>
 </section>
@@ -215,17 +247,19 @@ Explore our Products page to discover our full range of maize flour and animal f
 
 <!-- ABOUT -->
 <div id="about" class="page">
-<div class="page-head"><p class="eyebrow">ABOUT</p><h1>Who Are We?</h1><p>Novena Millers is a renowned maize milling company in Meru County, proudly recognized for producing high-quality maize flour and nutritious animal feeds.
-
-At Novena Millers, we are committed to delivering unmatched quality, consistency, and value in every product we make. From premium maize flour for your family's daily needs to quality animal feeds that support healthy livestock, we strive to meet the needs of every customer.
-
-We take pride in our commitment to quality, customer satisfaction, and excellence.
-
-Explore our Products page to discover our full range of maize flour and animal feed products.</p></div>
+<div class="page-head"><p class="eyebrow">ABOUT</p><h1>Who Are We?</h1><p>Novena Millers is a renowned maize milling company in Meru County, proudly recognized for producing high-quality maize flour and nutritious animal feeds.</p>
+<p>At Novena Millers, we are committed to delivering unmatched quality, consistency, and value in every product we make. From premium maize flour for your family's daily needs to quality animal feeds that support healthy livestock, we strive to meet the needs of every customer.</p>
+<p>We take pride in our commitment to quality, customer satisfaction, and excellence.</p>
+<p>Explore our Products page to discover our full range of maize flour and animal feed products.</p></div>
 <div class="pillars" style="grid-template-columns:1fr 1fr;margin-bottom:50px">
 <div><span class="n">01</span><h3>ROSACORN (ROSA)</h3><p>Grade 1 Maize Meal</p></div>
 <div><span class="n">02</span><h3>ANIMAL FEEDS</h3><p>9 Types for Chickens, Pigs &amp; Cows</p></div>
 </div>
+<section style="margin-bottom:60px">
+<p class="eyebrow">OUR ALBUMS</p>
+<h2 style="margin:12px 0 24px">Photo Albums</h2>
+<div class="albums" id="albumList"></div>
+</section>
 <div class="loc"><p class="eyebrow">OUR LOCATION</p><h2>Behind Shell Petrol Station, Iriene Area</h2><p style="margin:0">Maua Town, Meru County</p></div>
 </div>
 
@@ -323,7 +357,7 @@ Explore our Products page to discover our full range of maize flour and animal f
 <a class="btn wa" href="https://wa.me/254720220892?text=Hello%20Novena%2C%20I%20am%20at%20Shell%20Iriene%2C%20direct%20me%20to%20your%20Mill">I'M AT SHELL - DIRECT ME</a>
 <a class="btn" href="tel:+254793308004">CALL FOR DIRECTIONS - 0793 308 004</a>
 </div>
-<iframe class="map" title="Map showing Novena Maize Millers, Iriene, Maua" src="https://maps.app.goo.gl/qJSNE2AeHyg7ouXx9?g_st=aw;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<iframe class="map" title="Map showing Novena Maize Millers, Iriene, Maua"src="https://www.google.com/maps?q=Shell+Petrol+Station+Iriene+Maua+Town+Meru&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 <!-- CONTACT -->
@@ -600,6 +634,82 @@ function showOrder(){
   setTimeout(function(){ form.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 50);
 }
 
+function initHeroSlider(){
+  var slider = document.getElementById('heroSlider');
+  if (!slider) return;
+  var slides = slider.querySelectorAll('img');
+  var dots = document.getElementById('slDots');
+  var cur = 0, timer;
+  slides.forEach(function(_, i){
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.className = 'sl-dot';
+    d.setAttribute('aria-label', 'Show photo ' + (i + 1));
+    d.addEventListener('click', function(){ go(i); restart(); });
+    dots.appendChild(d);
+  });
+  function go(i){
+    cur = (i + slides.length) % slides.length;
+    slides.forEach(function(s, k){ s.classList.toggle('active', k === cur); });
+    dots.querySelectorAll('.sl-dot').forEach(function(d, k){ d.classList.toggle('active', k === cur); });
+  }
+  function restart(){
+    clearInterval(timer);
+    timer = setInterval(function(){ go(cur + 1); }, 4500);
+  }
+  slider.querySelector('.prev').addEventListener('click', function(){ go(cur - 1); restart(); });
+  slider.querySelector('.next').addEventListener('click', function(){ go(cur + 1); restart(); });
+  var x0 = null;
+  slider.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive: true});
+  slider.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1)); restart(); }
+    x0 = null;
+  });
+  go(0);
+  restart();
+}
+
+var ALBUMS = [
+  {title: "Our Team", photos: ["rosa-team.jpg"]},
+  {title: "Our Mill", photos: ["maua-mill.jpg", "loading.jpg"]},
+  {title: "Our Products", photos: ["rosa-5kg.jpg", "rosa-stock.jpg", "feeds-poster.jpg"]},
+  {title: "Deliveries", photos: ["delivery.jpg"]}
+];
+
+function openAlbum(i){
+  var a = ALBUMS[i];
+  document.getElementById('albumTitle').textContent = a.title;
+  document.getElementById('albumPhotos').innerHTML = a.photos.map(function(p){
+    return '<img src="' + p + '" alt="' + a.title + ' photo" loading="lazy">';
+  }).join('');
+  document.getElementById('albumModal').hidden = false;
+}
+function closeAlbum(){ document.getElementById('albumModal').hidden = true; }
+
+function initAlbums(){
+  var list = document.getElementById('albumList');
+  if (!list) return;
+  list.innerHTML = ALBUMS.map(function(a, i){
+    return '<a class="album" href="#" onclick="openAlbum(' + i + '); return false;">' +
+           '<img src="' + a.photos[0] + '" alt="' + a.title + '" loading="lazy">' +
+           '<div class="album-info"><b>' + a.title + '</b><span>' + a.photos.length + (a.photos.length === 1 ? ' photo' : ' photos') + '</span></div></a>';
+  }).join('');
+  var modal = document.createElement('div');
+  modal.className = 'lb';
+  modal.id = 'albumModal';
+  modal.hidden = true;
+  modal.innerHTML = '<div class="lb-box"><div class="lb-head"><h3 id="albumTitle"></h3>' +
+                    '<button type="button" class="lb-x" onclick="closeAlbum()" aria-label="Close">×</button></div>' +
+                    '<div class="gallery" id="albumPhotos"></div></div>';
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeAlbum(); });
+  document.body.appendChild(modal);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAlbum(); });
+}
+
+initHeroSlider();
+initAlbums();
 // Links that use onclick (no href) can be reached with Tab and opened with Enter
 document.querySelectorAll('a[onclick]:not([href])').forEach(a => {
   a.tabIndex = 0;
